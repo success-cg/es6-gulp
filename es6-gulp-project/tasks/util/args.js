@@ -20,3 +20,5 @@ const args = yargs.option('production', { //区分开发环境还是线上环境
   default: 8080,
   describe: 'server port'
 }).argv //对输入的命令行以字符串作为解析
+
+export default args;
