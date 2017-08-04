@@ -13,7 +13,7 @@ gulp.task('serve', (cb) => {
 
   server.start() // 启动服务器
 
-  gulp.watch(['server/public/**/*.js', 'server/view/**/*.ejs'], function(file) {
+  gulp.watch(['server/public/**/*.js', 'server/views/**/*.ejs'], function(file) {
     server.notify.apply(server, [file]) // 通知服务器文件发生了改变，要做相应的处理
   })
 
