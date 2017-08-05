@@ -51,7 +51,19 @@
 /* 1 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Test = function Test() {
+	  _classCallCheck(this, Test);
+
+	  this.a = 'hello world';
+	};
+
+	var test = new Test();
+
+	document.body.innerHTML = test.a;
 
 /***/ })
 /******/ ]);
