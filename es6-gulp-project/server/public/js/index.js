@@ -61,7 +61,12 @@
 
 	'use strict';
 
+	var _templateObject = _taggedTemplateLiteral(['I am ', ', ', ''], ['I am ', ', ', '']),
+	    _templateObject2 = _taggedTemplateLiteral(['H1\n', ''], ['H1\\n', '']);
+
 	__webpack_require__(3);
+
+	function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 	{
 	  console.log('a', 'a'); //a a
@@ -247,6 +252,32 @@
 	  //padStart() 方法补充字符串长度(在前面)，到足够的位数
 	  console.log(_str3.padEnd(3, '0')); //100
 	  //padEnd() 方法补充字符串长度(在后面)，到足够的位数
+	}
+
+	{
+	  var fn = function fn() {
+	    console.log(arguments); //[Array(3), "list", "hello world"]
+	  };
+
+	  /**
+	   * 标签模板
+	   */
+	  var user = {
+	    name: 'list',
+	    info: 'hello world'
+	  };
+
+	  fn(_templateObject, user.name, user.info);
+	}
+
+	{
+	  /**
+	   * 字符串API: raw
+	   * 用来获取一个模板字符串的原始字面量值的，
+	   * 任何类型的转义形式都会失效，保留原样输出
+	   */
+	  var _str4 = 'H1\n' + (1 + 2);
+	  console.log(String.raw(_templateObject2, 1 + 2)); //H1\n3
 	}
 
 /***/ }),

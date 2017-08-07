@@ -145,3 +145,29 @@ import 'babel-polyfill'
   console.log(str.padEnd(3,'0')); //100
   //padEnd() 方法补充字符串长度(在后面)，到足够的位数
 }
+
+{
+  /**
+   * 标签模板
+   */
+  let user = {
+    name: 'list',
+    info: 'hello world'
+  }
+
+  fn`I am ${user.name}, ${user.info}`
+
+  function fn() {
+    console.log(arguments); //[Array(3), "list", "hello world"]
+  }
+}
+
+{
+  /**
+   * 字符串API: raw
+   * 用来获取一个模板字符串的原始字面量值的，
+   * 任何类型的转义形式都会失效，保留原样输出
+   */
+  let str = `H1\n${1+2}`;
+  console.log(String.raw`H1\n${1+2}`); //H1\n3
+}
