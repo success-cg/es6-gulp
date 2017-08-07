@@ -200,6 +200,9 @@
 	}
 
 	{
+	  /**
+	   * 字符串API：includes startsWith endsWith
+	   */
 	  var _str = 'string';
 	  console.log('includes', _str.includes('r')); // true
 	  //includes() 方法用于判断一个字符串是否包含在另一个字符串中，
@@ -210,6 +213,40 @@
 	  console.log('end', _str.endsWith('ing')); // true
 	  //endsWith()方法用来判断当前字符串是否是以另外一个给定的
 	  //子字符串“结尾”的，根据判断结果返回 true 或 false。
+	}
+
+	{
+	  /**
+	   * 字符串API：repeat
+	   */
+	  var _str2 = 'abc';
+	  console.log('repeat', _str2.repeat(2)); // abcabc
+	  //repeat() 构造并返回一个新字符串，该字符串包含
+	  //被连接在一起的指定数量的字符串的副本。
+	}
+
+	{
+	  /**
+	   * 模板字符串
+	   */
+	  var name = 'list';
+	  var info = 'hello world';
+	  var m = 'I am ' + name + ', ' + info;
+	  console.log(m); //I am list, hello world
+	  //模板字符串，把字符串和变量结合起来
+	}
+
+	{
+	  /**
+	   * 字符串API：padStart padEnd
+	   * 接受2个参数
+	   * str.padStart(targetLength [, padString])
+	   */
+	  var _str3 = '1';
+	  console.log(_str3.padStart(3, '0')); //001
+	  //padStart() 方法补充字符串长度(在前面)，到足够的位数
+	  console.log(_str3.padEnd(3, '0')); //100
+	  //padEnd() 方法补充字符串长度(在后面)，到足够的位数
 	}
 
 /***/ }),
