@@ -1,1 +1,1 @@
-import './class/lesson2.js'
+import './class/lesson3.js'

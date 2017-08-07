@@ -61,173 +61,45 @@
 
 	'use strict';
 
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-	function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
-
 	/**
-	 * 解构赋值
+	 * 正则扩展
 	 */
 
 	{
-	  var a = void 0,
-	      b = void 0,
-	      rest = void 0;
-	  //解构赋值配对来赋值
-	  a = 1;
-	  b = 2;
-	  console.log(a, b); // 1 2
+	  var regex = new RegExp('xyz', 'i'); //声明正则表达式的方法，可以接收2个参数，都为字符串
+	  var regex2 = new RegExp(/xyz/i); //声明正则表达式，可以接收一个正则对象
+	  console.log(regex.test('xyz123'), regex.test('xyz123'));
+	  //true true
+
+	  var regex3 = new RegExp(/xyz/ig, 'i');
+	  //es6扩展正则表达式，第二个修饰符覆盖前面的修饰符，该式相当于 /xyz/i
+	  console.log(regex3.flags); // i
+	  // RegExp.prototype.flags 用来获取正则修饰符
 	}
 
 	{
-	  var _a = void 0,
-	      _b = void 0,
-	      _rest = void 0;
-	  //解构赋值可以配对成数组
-	  _a = 1;
-	  _b = 2;
-	  _rest = [3, 4, 5, 6];
-	  console.log(_a, _b, _rest); // 1 2 [3,4,5,6]
+	  //修饰符 y
+	  var s = 'bbb_bb_b';
+	  var a1 = /b+/g; //全局匹配，不一定紧跟上一次的匹配结果
+	  var a2 = new RegExp('b+', 'y'); //全局匹配，必须从第一个或者上一次的结果开始匹配
+	  console.log('one', a1.exec(s), a2.exec(s)); // ['bbb'] ['bbb']
+	  //exec() 方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 null。
+
+	  console.log('two', a1.exec(s), a2.exec(s)); // ['bb'] null
+
+	  console.log('three', a1.sticky, a2.sticky); // false true
+	  //sticky 方法返回布尔值，是否开启 y 修饰模式
 	}
 
 	{
-	  var _a2 = void 0,
-	      _b2 = void 0;
-	  //解构赋值用于对象的赋值
-	  var _a$b = { a: 1, b: 2 };
-	  _a2 = _a$b.a;
-	  _b2 = _a$b.b;
-	  console.log(_a2, _b2); // 1 2
-	}
+	  //修饰符 u
+	  console.log('u-1', /^\ud830/.test('\uD830\uDC2A')); //true
+	  console.log('u-2', /^(?:\uD830(?![\uDC00-\uDFFF]))/.test('\uD830\uDC2A')); //false
+	  //修饰符u，会把字符串看成整体
 
-	{
-	  var _a3 = void 0,
-	      _b3 = void 0,
-	      c = void 0,
-	      _rest2 = void 0;
-	  //解构赋值可以设置默认值
-	  var _ref = [1, 2];
-	  _a3 = _ref[0];
-	  _b3 = _ref[1];
-	  var _ref$ = _ref[2];
-	  c = _ref$ === undefined ? 3 : _ref$;
-	  console.log(_a3, _b3, c); // 1 2 3
-	}
-
-	{
-	  var _a4 = void 0,
-	      _b4 = void 0,
-	      _c = void 0,
-	      _rest3 = void 0;
-	  //解构赋值没有配对成功，就是undefined
-	  var _ref2 = [1, 2];
-	  _a4 = _ref2[0];
-	  _b4 = _ref2[1];
-	  _c = _ref2[2];
-	  console.log(_a4, _b4, _c); // 1 2 undefined
-	}
-
-	{
-	  var _a5 = 1,
-	      _b5 = 2;
-	  // 解构赋值用于变量交换
-	  var _ref3 = [_b5, _a5];
-	  _a5 = _ref3[0];
-	  _b5 = _ref3[1];
-	  console.log(_a5, _b5); // 2 1
-	}
-
-	{
-	  var fn = function fn() {
-	    return [1, 2];
-	  };
-
-	  var _a6 = void 0,
-	      _b6 = void 0;
-
-	  //解构赋值用于函数的返回值提取
-	  var _fn = fn();
-
-	  var _fn2 = _slicedToArray(_fn, 2);
-
-	  _a6 = _fn2[0];
-	  _b6 = _fn2[1];
-	  console.log(_a6, _b6); // 1 2
-	}
-
-	{
-	  var _fn3 = function _fn3() {
-	    return [1, 2, 3, 4, 5];
-	  };
-
-	  var _a7 = void 0,
-	      _b7 = void 0,
-	      _c2 = void 0;
-
-	  //解构赋值可以忽略中间值
-	  var _fn4 = _fn3();
-
-	  var _fn5 = _slicedToArray(_fn4, 4);
-
-	  _a7 = _fn5[0];
-	  _b7 = _fn5[3];
-	  console.log(_a7, _b7); //1 4
-	}
-
-	{
-	  var _fn6 = function _fn6() {
-	    return [1, 2, 3, 4, 5];
-	  };
-
-	  var _a8 = void 0,
-	      _b8 = void 0,
-	      _c3 = void 0;
-
-	  //解构赋值可以返回数组
-	  var _fn7 = _fn6();
-
-	  var _fn8 = _toArray(_fn7);
-
-	  _a8 = _fn8[0];
-	  _b8 = _fn8.slice(1);
-	  console.log(_a8, _b8); //1 [2,3,4,5]
-	}
-
-	{
-	  var o = { p: 42, q: true };
-	  var p = o.p,
-	      q = o.q; //解构赋值用于对象的赋值，匹配key赋值value
-
-	  console.log(p, q); // 42 true
-	}
-
-	{
-	  var _a10 = { a: 3 },
-	      _a10$a = _a10.a,
-	      _a9 = _a10$a === undefined ? 10 : _a10$a,
-	      _a10$b = _a10.b,
-	      _b9 = _a10$b === undefined ? 5 : _a10$b; //解构赋值用在对象上，可以设置默认值
-
-
-	  console.log(_a9, _b9); //3 5
-	}
-
-	{
-	  var metaData = {
-	    title: 'abc',
-	    test: [{
-	      title: 'test',
-	      desc: 'description'
-	    }]
-	  };
-
-	  var esTitle = metaData.title,
-	      _metaData$test = _slicedToArray(metaData.test, 1),
-	      cnTitle = _metaData$test[0].title;
-	  //解构赋值可以提取多层级对象的value值，需要把对象结构和key保证
-
-
-	  console.log(esTitle, cnTitle); //abc test
+	  console.log(/\u{61}/.test('a'));false;
+	  console.log(/a/.test('a'));true;
+	  //unicode码要加修饰符u，才能被识别，‘a’的unicode码是61
 	}
 
 /***/ })
