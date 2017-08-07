@@ -95,11 +95,21 @@
 	  //修饰符 u
 	  console.log('u-1', /^\ud830/.test('\uD830\uDC2A')); //true
 	  console.log('u-2', /^(?:\uD830(?![\uDC00-\uDFFF]))/.test('\uD830\uDC2A')); //false
-	  //修饰符u，会把字符串看成整体
+	  //修饰符u，会把字符串看成一个字节
 
 	  console.log(/\u{61}/.test('a'));false;
 	  console.log(/a/.test('a'));true;
 	  //unicode码要加修饰符u，才能被识别，‘a’的unicode码是61
+
+	  console.log('\uD842\uDFB7'); // 𠮷
+	  var _s = '𠮷';
+	  console.log('u-3', /^.$/.test(_s)); // false
+	  console.log('u-4', /^(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])$/.test(_s)); // true
+	  // 正则表达式中的'.'只能匹配1个字节的字符，超过一个1字节，需要加修饰符u
+
+	  console.log('u-4', /𠮷{2}/.test('𠮷𠮷')); //false
+	  console.log('u-5', /(?:\uD842\uDFB7){2}/.test('𠮷𠮷')); //true
+	  // 正则表达式，字符的unicode码大于2个字节，需要加修饰符 u 才能识别
 	}
 
 /***/ })

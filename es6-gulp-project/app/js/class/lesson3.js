@@ -32,9 +32,19 @@
   //修饰符 u
   console.log('u-1', /^\ud830/.test('\ud830\udc2a')); //true
   console.log('u-2', /^\ud830/u.test('\ud830\udc2a')); //false
-  //修饰符u，会把字符串看成整体
+  //修饰符u，会把字符串看成一个字节
 
   console.log(/\u{61}/.test('a')); false
   console.log(/\u{61}/u.test('a')); true
   //unicode码要加修饰符u，才能被识别，‘a’的unicode码是61
+
+  console.log(`\u{20BB7}`); // 𠮷
+  let s = '𠮷'
+  console.log('u-3', /^.$/.test(s)); // false
+  console.log('u-4', /^.$/u.test(s)); // true
+  // 正则表达式中的'.'只能匹配1个字节的字符，超过一个1字节，需要加修饰符u
+
+  console.log('u-4', /𠮷{2}/.test('𠮷𠮷')); //false
+  console.log('u-5', /𠮷{2}/u.test('𠮷𠮷')); //true
+  // 正则表达式，字符的unicode码大于2个字节，需要加修饰符 u 才能识别
 }
