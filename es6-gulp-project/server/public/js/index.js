@@ -199,6 +199,19 @@
 	  }
 	}
 
+	{
+	  var _str = 'string';
+	  console.log('includes', _str.includes('r')); // true
+	  //includes() 方法用于判断一个字符串是否包含在另一个字符串中，
+	  //根据情况返回true或false。
+	  console.log('start', _str.startsWith('str')); // true
+	  //startsWith()方法用来判断当前字符串是否是以另外一个给定的
+	  //子字符串“开头”的，根据判断结果返回 true 或 false。
+	  console.log('end', _str.endsWith('ing')); // true
+	  //endsWith()方法用来判断当前字符串是否是以另外一个给定的
+	  //子字符串“结尾”的，根据判断结果返回 true 或 false。
+	}
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
