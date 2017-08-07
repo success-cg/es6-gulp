@@ -53,64 +53,7 @@
 
 	'use strict';
 
-	__webpack_require__(2);
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * 正则扩展
-	 */
-
-	{
-	  var regex = new RegExp('xyz', 'i'); //声明正则表达式的方法，可以接收2个参数，都为字符串
-	  var regex2 = new RegExp(/xyz/i); //声明正则表达式，可以接收一个正则对象
-	  console.log(regex.test('xyz123'), regex.test('xyz123'));
-	  //true true
-
-	  var regex3 = new RegExp(/xyz/ig, 'i');
-	  //es6扩展正则表达式，第二个修饰符覆盖前面的修饰符，该式相当于 /xyz/i
-	  console.log(regex3.flags); // i
-	  // RegExp.prototype.flags 用来获取正则修饰符
-	}
-
-	{
-	  //修饰符 y
-	  var s = 'bbb_bb_b';
-	  var a1 = /b+/g; //全局匹配，不一定紧跟上一次的匹配结果
-	  var a2 = new RegExp('b+', 'y'); //全局匹配，必须从第一个或者上一次的结果开始匹配
-	  console.log('one', a1.exec(s), a2.exec(s)); // ['bbb'] ['bbb']
-	  //exec() 方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 null。
-
-	  console.log('two', a1.exec(s), a2.exec(s)); // ['bb'] null
-
-	  console.log('three', a1.sticky, a2.sticky); // false true
-	  //sticky 方法返回布尔值，是否开启 y 修饰模式
-	}
-
-	{
-	  //修饰符 u
-	  console.log('u-1', /^\ud830/.test('\uD830\uDC2A')); //true
-	  console.log('u-2', /^(?:\uD830(?![\uDC00-\uDFFF]))/.test('\uD830\uDC2A')); //false
-	  //修饰符u，会把字符串看成一个字节
-
-	  console.log(/\u{61}/.test('a'));false;
-	  console.log(/a/.test('a'));true;
-	  //unicode码要加修饰符u，才能被识别，‘a’的unicode码是61
-
-	  console.log('\uD842\uDFB7'); // 𠮷
-	  var _s = '𠮷';
-	  console.log('u-3', /^.$/.test(_s)); // false
-	  console.log('u-4', /^(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])$/.test(_s)); // true
-	  // 正则表达式中的'.'只能匹配1个字节的字符，超过一个1字节，需要加修饰符u
-
-	  console.log('u-4', /𠮷{2}/.test('𠮷𠮷')); //false
-	  console.log('u-5', /(?:\uD842\uDFB7){2}/.test('𠮷𠮷')); //true
-	  // 正则表达式，字符的unicode码大于2个字节，需要加修饰符 u 才能识别
-	}
+	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./class/lesson3.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 /***/ })
 /******/ ]);
