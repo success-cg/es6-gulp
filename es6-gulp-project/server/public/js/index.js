@@ -147,5 +147,20 @@
 	  (_console3 = console).log.apply(_console3, ['a'].concat([1, 2, 4])); //a 1 2 4
 	}
 
+	{
+	  /**
+	   * 箭头函数
+	   */
+	  var arrow = function arrow(v) {
+	    return v * 2;
+	  }; //没有{}就默认有 return
+	  console.log('arrow', arrow(3)); //6
+
+	  var arrow2 = function arrow2(v) {
+	    v * 2;
+	  }; //有{}，则return要明写，不写就相当于没有return
+	  console.log('arrow2', arrow2(3)); //undefined
+	}
+
 /***/ })
 /******/ ]);
