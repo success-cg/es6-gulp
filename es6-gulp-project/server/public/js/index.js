@@ -98,6 +98,20 @@
 	    console.log(item.textContent); //hello world chengong
 	    //Node.textContent 属性表示一个节点及其后代的文本内容。
 	  });
+
+	  console.log(Array.from([2, 5, 4], function (item) {
+	    return Math.pow(item, 2); //[4,25,16]
+	    //Array.from()第二个参数的作用和数组的map方法一样
+	  }));
+	}
+
+	{
+	  console.log('fill-7', [1, 'a', undefined].fill(7));
+	  //fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
+	  // arr.fill(value)
+	  // arr.fill(value, start)
+	  // arr.fill(value, start, end)
+	  // 接受3个参数，后两个表示起始和终止的序号，为可选
 	}
 
 /***/ })
