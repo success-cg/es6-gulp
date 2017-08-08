@@ -162,5 +162,22 @@
 	  console.log('arrow2', arrow2(3)); //undefined
 	}
 
+	{
+	  /**
+	   * 尾调用, 就是指某个函数的最后一步是调用另一个函数。
+	   * 作用，‘尾调用优化’，大大节省内存，解决递归爆栈的问题
+	   * 但在浏览器中的JavaScript解释器中还未实现
+	   */
+	  var tail = function tail(x) {
+	    console.log('tail', x);
+	  };
+
+	  var fn = function fn(x) {
+	    return tail(x);
+	  };
+
+	  fn(123); // 123
+	}
+
 /***/ })
 /******/ ]);
