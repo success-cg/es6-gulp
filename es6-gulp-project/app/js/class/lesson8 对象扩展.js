@@ -64,8 +64,22 @@
   /**
    * 新增API：Object.assign
    * 浅拷贝对象，根据key,有就覆盖，没有就添加
+   * 只拷贝自身的属性，不拷贝继承的属性
    */
   let obj1 = {a:'a'};
   let obj2 = {b:'b'};
   console.log('拷贝', Object.assign(obj1, obj2)); //{a: "a", b: "b"}
+}
+
+{
+  /**
+   * 新增API：Object.entries
+   * Object.entries() 方法返回一个给定对象自己的可枚举属性[key, value]对的数组
+   */
+  let test = {k: 123, h: 456};
+  for (let [key, value] of Object.entries(test)) {
+    console.log('[key, value]', [key, value]);
+    // ["k", 123]
+    // ["h", 456]
+  }
 }
