@@ -61,122 +61,75 @@
 
 	'use strict';
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	/**
+	 * 对象扩展
+	 */
+
 	{
 	  /**
-	   * 函数参数默认值
+	   * 简洁表示法
 	   */
-	  var test = function test(x) {
-	    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'world';
-
-	    //参数 y 默认值为 world
-	    console.log('默认值', x, y);
+	  //对象简洁写法
+	  var a = 1;
+	  var b = 'hello';
+	  var es5 = {
+	    a: a,
+	    b: b
+	    //对象的key value 一样则可以简写
+	  };var es6 = {
+	    a: a,
+	    b: b
 	  };
 
-	  test('hello'); //hello world
-	  test('hello', 'cg'); //hello cg
-	}
+	  console.log(es5, es6); //输出结果一样
 
-	{
-	  var test2 = function test2(x) {
-	    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
-
-	    //给y赋值的x,是函数内部作用域的x
-	    console.log('作用域', x, y);
-	  };
-
-	  /**
-	   * 函数作用域
-	   */
-	  var x = 'test';
-
-	  test2('hello'); //hello hello
-	  test2(); //undefined undefined
-	}
-
-	{
-	  /**
-	   * 函数的rest参数，类似 arguments 对象，
-	   * 把离散的参数转化成伪数组
-	   * 但是没有 arguments[0] 的问题
-	   */
-	  var test3 = function test3() {
-	    var _console;
-
-	    for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
-	      arg[_key] = arguments[_key];
-	    }
-
-	    (_console = console).log.apply(_console, arg); // 1 2 3 4 'a'
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
-	    try {
-	      for (var _iterator = arg[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var v = _step.value;
-
-	        console.log('rest', v); // 1 2 3 4 'a'
-	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
+	  //函数简洁写法
+	  var es5_method = {
+	    hello: function hello() {
+	      console.log('hello');
 	    }
 	  };
 
-	  test3(1, 2, 3, 4, 'a');
-	}
-
-	{
-	  var _console2, _console3;
-
-	  /**
-	   * 扩展运算符，rest参数的逆运算
-	   * 把数组参数转化成离散的参数
-	   */
-	  (_console2 = console).log.apply(_console2, [1, 2, 4]); //1 2 4
-	  (_console3 = console).log.apply(_console3, ['a'].concat([1, 2, 4])); //a 1 2 4
-	}
-
-	{
-	  /**
-	   * 箭头函数
-	   */
-	  var arrow = function arrow(v) {
-	    return v * 2;
-	  }; //没有{}就默认有 return
-	  console.log('arrow', arrow(3)); //6
-
-	  var arrow2 = function arrow2(v) {
-	    v * 2;
-	  }; //有{}，则return要明写，不写就相当于没有return
-	  console.log('arrow2', arrow2(3)); //undefined
-	}
-
-	{
-	  /**
-	   * 尾调用, 就是指某个函数的最后一步是调用另一个函数。
-	   * 作用，‘尾调用优化’，大大节省内存，解决递归爆栈的问题
-	   * 但在浏览器中的JavaScript解释器中还未实现
-	   */
-	  var tail = function tail(x) {
-	    console.log('tail', x);
+	  var es6_method = {
+	    hello: function hello() {
+	      console.log('hello');
+	    }
 	  };
+	  console.log(es5_method.hello(), es6_method.hello()); //输出结果一样
+	}
 
-	  var fn = function fn(x) {
-	    return tail(x);
+	{
+	  /**
+	   * 属性表达式
+	   */
+	  var _a = 'b';
+	  var es5_obj = {
+	    a: 'c'
 	  };
+	  //es6中，对象的key值可以是表达式，用[]包起来
+	  var es6_obj = _defineProperty({}, _a, 'c');
+	  console.log(es6_obj); //{b: 'c'}
+	}
 
-	  fn(123); // 123
+	{
+	  /**
+	   * 新增API: Object.is
+	   * 功能和 '===' 一样
+	   */
+	  console.log('字符串', Object.is('abc', 'abc')); //true
+	  console.log('数组', Object.is([], []), [] === []); //false false
+	}
+
+	{
+	  /**
+	   * 新增API：Object.assign
+	   * 浅拷贝对象，根据key,有就覆盖，没有就添加
+	   */
+	  var obj1 = { a: 'a' };
+	  var obj2 = { b: 'b' };
+	  console.log('拷贝', Object.assign(obj1, obj2)); //{a: "a", b: "b"}
 	}
 
 /***/ })
