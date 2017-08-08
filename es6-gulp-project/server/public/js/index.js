@@ -108,6 +108,9 @@
 	}
 
 	{
+	  /**
+	   * 数组API：fill
+	   */
 	  console.log('fill-7', [1, 'a', undefined].fill(7)); // [7,7,7]
 	  //fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
 	  console.log('fill,pos', ['a', 'b', 'c'].fill(7, 1, 3)); // ['a',7,7]
@@ -119,6 +122,9 @@
 	}
 
 	{
+	  /**
+	   * 数组API：keys values entries
+	   */
 	  var _iteratorNormalCompletion = true;
 	  var _didIteratorError = false;
 	  var _iteratorError = undefined;
@@ -200,6 +206,30 @@
 	      }
 	    }
 	  }
+	}
+
+	{
+	  /**
+	   * 数组API：copyWithin
+	   */
+	  console.log('copyWithin', [1, 2, 3, 4, 5].copyWithin(0, 3, 4)); //[4, 2, 3, 4, 5]
+	  //copyWithin() 方法浅复制数组的一部分到同一数组中的另一个位置，并返回它，而不修改其大小。
+	  //语法 arr.copyWithin(target, start, end)
+	}
+
+	{
+	  /**
+	   * 数组API：find findIndex
+	   */
+	  console.log('find', [1, 2, 3, 4, 5, 6, 7].find(function (item) {
+	    return item > 3;
+	  })); // 4
+	  //find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+
+	  console.log('findIndex', [1, 2, 3, 4, 5, 6, 7].findIndex(function (item) {
+	    return item > 3;
+	  })); // 3
+	  //findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1。
 	}
 
 /***/ }),
