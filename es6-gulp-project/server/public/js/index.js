@@ -106,12 +106,14 @@
 	}
 
 	{
-	  console.log('fill-7', [1, 'a', undefined].fill(7));
+	  console.log('fill-7', [1, 'a', undefined].fill(7)); // [7,7,7]
 	  //fill() 方法用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
+	  console.log('fill,pos', ['a', 'b', 'c'].fill(7, 1, 3)); // ['a',7,7]
 	  // arr.fill(value)
 	  // arr.fill(value, start)
 	  // arr.fill(value, start, end)
 	  // 接受3个参数，后两个表示起始和终止的序号，为可选
+	  // start 默认为 0， end 默认为 this.length
 	}
 
 /***/ })
