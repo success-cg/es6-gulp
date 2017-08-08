@@ -2,6 +2,8 @@
  * 数组扩展
  */
 
+import 'babel-polyfill'
+
 {
   /**
    * 数组API：Array.of
@@ -51,4 +53,23 @@
   // arr.fill(value, start, end)
   // 接受3个参数，后两个表示起始和终止的序号，为可选
   // start 默认为 0， end 默认为 this.length
+}
+
+{
+  for (let index of ['a','1','ss'].keys()) {
+    console.log('keys', index); // 0 1 2
+    //keys() 方法返回一个新的 Array Iterator 对象，它包含数组中每个索引的键(序号)。
+  }
+
+  for (let value of ['a','1','ss'].values()) {
+    console.log('values', value); // a 1 ss
+    //兼容为题，要引入 babel-polyfill
+    //values() 方法返回一个新的 Array Iterator 对象，该对象包含数组每个索引的值。
+  }
+
+  for (let [index, value] of ['a','1','ss'].entries()) {
+    console.log('[index, value]', [index, value]); // [0,'a'] [1,'1'] [2,'ss']
+    //entries() 方法返回一个新的Array Iterator对象，该对象包含数组中每个索引的键/值对。
+    //entries() 方法相当于 keys() 和 values() 方法的结合体
+  }
 }
