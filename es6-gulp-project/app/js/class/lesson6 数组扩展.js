@@ -91,7 +91,7 @@ import 'babel-polyfill'
 
 {
   /**
-   * 数组API：find findIndex
+   * 数组API：find findIndex includes
    */
   console.log('find', [1,2,3,4,5,6,7].find((item) => {
     return item > 3
@@ -102,4 +102,9 @@ import 'babel-polyfill'
     return item > 3
   })); // 3
   //findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。否则返回-1。
+
+  console.log('includes', [1,2,NaN].includes(1)); //true
+  console.log('includes', [1,2,NaN].includes(NaN)); //true
+  //includes() 方法用来判断一个数组是否包含一个指定的值，如果是，酌情返回 true或 false。
+  //语法 arr.includes(searchElement, fromIndex)
 }
