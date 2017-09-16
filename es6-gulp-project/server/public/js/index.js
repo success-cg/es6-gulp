@@ -66,95 +66,50 @@
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	/**
-	 * 对象扩展
+	 * Symbol 创造的变量独一无二，
+	 * 每个从Symbol()返回的symbol值都是唯一的。
 	 */
 
 	{
-	  /**
-	   * 简洁表示法
-	   */
-	  //对象简洁写法
-	  var a = 1;
-	  var b = 'hello';
-	  var es5 = {
-	    a: a,
-	    b: b
-	    //对象的key value 一样则可以简写
-	  };var es6 = {
-	    a: a,
-	    b: b
-	  };
-
-	  console.log(es5, es6); //输出结果一样
-
-	  //函数简洁写法
-	  var es5_method = {
-	    hello: function hello() {
-	      console.log('hello');
-	    }
-	  };
-
-	  var es6_method = {
-	    hello: function hello() {
-	      console.log('hello');
-	    }
-	  };
-	  console.log(es5_method.hello(), es6_method.hello()); //输出结果一样
+	  // 声明
+	  var a1 = Symbol();
+	  var a2 = Symbol();
+	  console.log(a1 === a2); //false
+	  var a3 = Symbol.for('a3');
+	  // Symbol.for方法检测是否声明过key值为a3的变量，
+	  // 如果声明过a3 ，则返回该值，如果没有，则声明之。
+	  var a4 = Symbol.for('a3');
+	  console.log('a4 === a3', a4 === a3); //true
 	}
 
 	{
-	  /**
-	   * 属性表达式
-	   */
-	  var _a = 'b';
-	  var es5_obj = {
-	    a: 'c'
-	  };
-	  //es6中，对象的key值可以是表达式，用[]包起来
-	  var es6_obj = _defineProperty({}, _a, 'c');
-	  console.log(es6_obj); //{b: 'c'}
-	}
+	  var _obj;
 
-	{
-	  /**
-	   * 新增API: Object.is
-	   * 功能和 '===' 一样
-	   */
-	  console.log('字符串', Object.is('abc', 'abc')); //true
-	  console.log('数组', Object.is([], []), [] === []); //false false
-	}
+	  // Symbol 的作用
+	  var _a = Symbol.for('abc');
+	  // 解决变量冲突
+	  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
+	  console.log('obj', obj); //{abc: 345, c: 456, Symbol(abc): "123"}
 
-	{
-	  /**
-	   * 新增API：Object.assign
-	   * 浅拷贝对象，根据key,有就覆盖，没有就添加
-	   * 只拷贝自身的属性，不拷贝继承的属性
-	   */
-	  var obj1 = { a: 'a' };
-	  var obj2 = { b: 'b' };
-	  console.log('拷贝', Object.assign(obj1, obj2)); //{a: "a", b: "b"}
-	}
-
-	{
-	  /**
-	   * 新增API：Object.entries
-	   * Object.entries() 方法返回一个给定对象自己的可枚举属性[key, value]对的数组
-	   */
-	  var test = { k: 123, h: 456 };
+	  // 使用Symbol作为key值，使用for in、let of 方法是取不到这个值的
 	  var _iteratorNormalCompletion = true;
 	  var _didIteratorError = false;
 	  var _iteratorError = undefined;
 
 	  try {
-	    for (var _iterator = Object.entries(test)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	      var _step$value = _slicedToArray(_step.value, 2),
 	          key = _step$value[0],
 	          value = _step$value[1];
 
-	      console.log('[key, value]', [key, value]);
-	      // ["k", 123]
-	      // ["h", 456]
+	      //Object.entries 见lesson8
+	      console.log('let of', key, value);
 	    }
+	    // 打印结果
+	    // abc 345
+	    // c 456
+
+	    // 可以使用Object.getOwnPropertySymbols方法获取 Symbol 作为key的属性
 	  } catch (err) {
 	    _didIteratorError = true;
 	    _iteratorError = err;
@@ -169,6 +124,21 @@
 	      }
 	    }
 	  }
+
+	  Object.getOwnPropertySymbols(obj).forEach(function (item) {
+	    console.log('Object.getOwnPropertySymbols', item, obj[item]);
+	    //只获取 Symbol 作为key的值
+	    //Symbol(abc) "123"
+	  });
+
+	  //可以使用 Reflect.ownKeys 方法获取所有的key值，包括Symbol和普通的
+	  Reflect.ownKeys(obj).forEach(function (item) {
+	    console.log('Reflect.ownKeys', item, obj[item]);
+	  });
+	  // 打印结果
+	  // abc 345
+	  // c 456
+	  // Symbol(abc) "123"
 	}
 
 /***/ })
