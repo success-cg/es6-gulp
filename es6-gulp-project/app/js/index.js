@@ -4,4 +4,4 @@
 // import './class/lesson4 字符串扩展.js';
 // import './class/lesson6 数组扩展.js';
 // import './class/lesson7 函数扩展.js';
-import './class/lesson9 Symbol用法';
+// import './class/lesson9 Symbol用法';
