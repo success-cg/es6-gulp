@@ -61,84 +61,68 @@
 
 	'use strict';
 
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	/**
-	 * Symbol 创造的变量独一无二，
-	 * 每个从Symbol()返回的symbol值都是唯一的。
-	 */
-
 	{
-	  // 声明
-	  var a1 = Symbol();
-	  var a2 = Symbol();
-	  console.log(a1 === a2); //false
-	  var a3 = Symbol.for('a3');
-	  // Symbol.for方法检测是否声明过key值为a3的变量，
-	  // 如果声明过a3 ，则返回该值，如果没有，则声明之。
-	  var a4 = Symbol.for('a3');
-	  console.log('a4 === a3', a4 === a3); //true
-	}
+	  var obj = {
+	    time: '2017-11-11',
+	    name: 'cg',
+	    _r: 123
+	  };
 
-	{
-	  var _obj;
+	  var monitor = new Proxy(obj, {
+	    // 代理对象属性的读取，替换返回值里的'2017'为'2018'
+	    get: function get(target, key, proxy) {
+	      //target为代理的obj，key为访问的key, proxy为monitor
+	      console.log('target: ' + (target === obj) + ',key: ' + key); //target: true,key: time
+	      console.log(proxy === monitor); //true
+	      return target[key].replace('2017', '2018'); //拦截读取操作，把返回的结果里的‘2017’换成'2018'
+	    },
 
-	  // Symbol 的作用
-	  var _a = Symbol.for('abc');
-	  // 解决变量冲突
-	  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
-	  console.log('obj', obj); //{abc: 345, c: 456, Symbol(abc): "123"}
 
-	  // 使用Symbol作为key值，使用for in、let of 方法是取不到这个值的
-	  var _iteratorNormalCompletion = true;
-	  var _didIteratorError = false;
-	  var _iteratorError = undefined;
-
-	  try {
-	    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	      var _step$value = _slicedToArray(_step.value, 2),
-	          key = _step$value[0],
-	          value = _step$value[1];
-
-	      //Object.entries 见lesson8
-	      console.log('let of', key, value);
-	    }
-	    // 打印结果
-	    // abc 345
-	    // c 456
-
-	    // 可以使用Object.getOwnPropertySymbols方法获取 Symbol 作为key的属性
-	  } catch (err) {
-	    _didIteratorError = true;
-	    _iteratorError = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion && _iterator.return) {
-	        _iterator.return();
+	    // 代理对象设置属性，只能修改'name'的 value
+	    set: function set(target, key, value, proxy) {
+	      //target为代理的obj,key为访问的key,value为要修改的值，proxy为monitor
+	      console.log('set-arguments', arguments); //arguments的长度为2
+	      if (key === 'name') {
+	        return target[key] = value;
+	      } else {
+	        return target[key];
 	      }
-	    } finally {
-	      if (_didIteratorError) {
-	        throw _iteratorError;
+	    },
+
+
+	    // 代理key in Object操作，只有name属性可以查到，其他属性查不到
+	    has: function has(target, key) {
+	      //target为代理的obj，key为访问的key
+	      console.log('has-arguments', arguments); //arguments的长度为2
+	      if (key === 'name') {
+	        return target[key];
+	      } else {
+	        return false;
+	      }
+	    },
+
+
+	    // 代理delete,只能删除 '_' 存在的属性
+	    deleteProperty: function deleteProperty(target, key) {
+	      console.log('delete-arguments', arguments); //arguments的长度为2
+	      if (key.indexOf('_') > -1) {
+	        delete target[key];
+	        return true;
+	      } else {
+	        return target[key];
 	      }
 	    }
-	  }
-
-	  Object.getOwnPropertySymbols(obj).forEach(function (item) {
-	    console.log('Object.getOwnPropertySymbols', item, obj[item]);
-	    //只获取 Symbol 作为key的值
-	    //Symbol(abc) "123"
 	  });
 
-	  //可以使用 Reflect.ownKeys 方法获取所有的key值，包括Symbol和普通的
-	  Reflect.ownKeys(obj).forEach(function (item) {
-	    console.log('Reflect.ownKeys', item, obj[item]);
-	  });
-	  // 打印结果
-	  // abc 345
-	  // c 456
-	  // Symbol(abc) "123"
+	  console.log('get', monitor.time); // 2018-11-11
+	  monitor.name = 'ly';
+	  monitor._r = 456;
+	  console.log('set', monitor); //name设置成了'ly',而_r仍然为123，没有变成456
+	  console.log('has', 'name' in monitor, 'time' in monitor); // true false 只能查到name，隐藏了time和_r
+
+	  delete monitor.time;
+	  delete monitor._r;
+	  console.log('delete', monitor); //time属性没有删除，_r属性删除了
 	}
 
 /***/ })
