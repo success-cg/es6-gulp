@@ -61,358 +61,176 @@
 
 	'use strict';
 
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	{
-	  // Set 数据类型
-	  var list = new Set();
-	  list.add(5);
-	  list.add(7);
-	  //size方法获取 list 的元素个数, 类似数组的length
-	  console.log('size', list.size); // 2
+	  // 基本定义和生成实例
+	  var Parent = function Parent() {
+	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
+
+	    _classCallCheck(this, Parent);
+
+	    this.name = name;
+	  };
+
+	  var v_parent = new Parent('v');
+	  console.log('构造函数和实例', v_parent);
+	  // Parent {name: "v"}
 	}
 
 	{
-	  var _arr = [1, 2, 3, 4, 5];
-	  var _list = new Set(_arr);
-	  console.log('size', _list.size); // 5
-	}
+	  // 继承,关键字 extends
+	  var _Parent = function _Parent() {
+	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
 
-	{
-	  // Set 数据是独一无二的，意味不重复
-	  var _list2 = new Set();
-	  _list2.add(1);
-	  _list2.add(2);
-	  _list2.add(1);
-	  console.log('list', _list2);
+	    _classCallCheck(this, _Parent);
 
-	  // Set 可以用来做数组去重
-	  var _arr2 = [1, 2, 3, 1, 2];
-	  var list2 = new Set(_arr2);
-	  console.log('unique', list2); // {1, 2, 3}
-	}
+	    this.name = name;
+	  };
 
-	{
-	  // Set 的API，has,delete
-	  var _arr3 = ['add', 'delete', 'clear', 'has'];
-	  var _list3 = new Set(_arr3);
+	  var Child = function (_Parent2) {
+	    _inherits(Child, _Parent2);
 
-	  console.log('has', _list3.has('add')); //true,    list里面有'add'元素
-	  console.log('delete', _list3.delete('add'), _list3);
-	  //true, ["delete", "clear", "has"],    delete成功返回true,
-	}
+	    function Child() {
+	      _classCallCheck(this, Child);
 
-	{
-	  // Set遍历元素
-	  var _arr4 = ['add', 'delete', 'clear', 'has'];
-	  var _list4 = new Set(_arr4);
-	  var _iteratorNormalCompletion = true;
-	  var _didIteratorError = false;
-	  var _iteratorError = undefined;
-
-	  try {
-	    for (var _iterator = _list4.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	      var key = _step.value;
-
-	      console.log('keys', key);
-	    } //'add', 'delete', 'clear', 'has'
-	  } catch (err) {
-	    _didIteratorError = true;
-	    _iteratorError = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion && _iterator.return) {
-	        _iterator.return();
-	      }
-	    } finally {
-	      if (_didIteratorError) {
-	        throw _iteratorError;
-	      }
+	      return _possibleConstructorReturn(this, (Child.__proto__ || Object.getPrototypeOf(Child)).apply(this, arguments));
 	    }
-	  }
 
-	  var _iteratorNormalCompletion2 = true;
-	  var _didIteratorError2 = false;
-	  var _iteratorError2 = undefined;
+	    return Child;
+	  }(_Parent);
 
-	  try {
-	    for (var _iterator2 = _list4.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	      var value = _step2.value;
+	  console.log('继承', new Child()); // Child {name: "cg"}
+	}
 
-	      console.log('values', value);
-	    } //'add', 'delete', 'clear', 'has'
-	  } catch (err) {
-	    _didIteratorError2 = true;
-	    _iteratorError2 = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	        _iterator2.return();
-	      }
-	    } finally {
-	      if (_didIteratorError2) {
-	        throw _iteratorError2;
-	      }
+	{
+	  // 继承,传递参数，关键字 super 方法
+	  var _Parent3 = function _Parent3() {
+	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
+
+	    _classCallCheck(this, _Parent3);
+
+	    this.name = name;
+	    this.age = 18;
+	  };
+
+	  var _Child = function (_Parent4) {
+	    _inherits(_Child, _Parent4);
+
+	    function _Child() {
+	      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'child';
+	      var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 30;
+
+	      _classCallCheck(this, _Child);
+
+	      //必须在使用this关键字之前使用，否则报错
+	      // super 方法调用父类的构造函数,即调用 this.name = name; this.age = 18;
+	      // super 内的参数，与父类中参数是一致的，即name, age
+	      var _this2 = _possibleConstructorReturn(this, (_Child.__proto__ || Object.getPrototypeOf(_Child)).call(this, name, age));
+
+	      _this2.type = 'child'; //子类自己的属性
+	      return _this2;
 	    }
-	  }
 
-	  var _iteratorNormalCompletion3 = true;
-	  var _didIteratorError3 = false;
-	  var _iteratorError3 = undefined;
+	    return _Child;
+	  }(_Parent3);
 
-	  try {
-	    for (var _iterator3 = _list4[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	      var _value = _step3.value;
-	      //默认返回的是value
-	      console.log('values', _value);
-	    } //'add', 'delete', 'clear', 'has'
-	  } catch (err) {
-	    _didIteratorError3 = true;
-	    _iteratorError3 = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion3 && _iterator3.return) {
-	        _iterator3.return();
-	      }
-	    } finally {
-	      if (_didIteratorError3) {
-	        throw _iteratorError3;
-	      }
+	  console.log('继承', new _Child()); // _Child {name: "child", age: 18, type: "child"}
+	}
+
+	{
+	  // getter, setter 读写方法
+	  var _Parent5 = function () {
+	    function _Parent5() {
+	      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
+
+	      _classCallCheck(this, _Parent5);
+
+	      this.name = name;
+	      this.age = 18;
 	    }
-	  }
 
-	  var _iteratorNormalCompletion4 = true;
-	  var _didIteratorError4 = false;
-	  var _iteratorError4 = undefined;
-
-	  try {
-	    for (var _iterator4 = _list4.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-	      var _step4$value = _slicedToArray(_step4.value, 2),
-	          _key = _step4$value[0],
-	          _value2 = _step4$value[1];
-
-	      console.log('entries', { key: _key, value: _value2 });
-	    }
-	    // {key: "add", value: "add"}
-	    // {key: "add", value: "add"}
-	    // {key: "clear", value: "clear"}
-	    // {key: "has", value: "has"}
-	  } catch (err) {
-	    _didIteratorError4 = true;
-	    _iteratorError4 = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion4 && _iterator4.return) {
-	        _iterator4.return();
+	    _createClass(_Parent5, [{
+	      key: 'longName',
+	      get: function get() {
+	        // 注意，这里的longName是属性，不是方法
+	        return 'mk' + this.name;
+	      },
+	      set: function set(value) {
+	        // 注意，这里的longName是属性，不是方法
+	        this.name = value;
 	      }
-	    } finally {
-	      if (_didIteratorError4) {
-	        throw _iteratorError4;
-	      }
+	    }]);
+
+	    return _Parent5;
+	  }();
+
+	  var v = new _Parent5();
+	  console.log('getter', v.longName); // mkcg
+	  v.longName = 'ly';
+	  console.log('setter', v.longName); // mkly
+	}
+
+	{
+	  // static 静态方法
+	  var _Parent6 = function () {
+	    function _Parent6() {
+	      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
+
+	      _classCallCheck(this, _Parent6);
+
+	      this.name = name;
+	      this.age = 18;
 	    }
-	  }
 
-	  _list4.forEach(function (item) {
-	    return console.log(item);
-	  });
-	  // 'add', 'delete', 'clear', 'has'
+	    _createClass(_Parent6, null, [{
+	      key: 'tell',
+	      value: function tell() {
+	        // 声明静态方法 tell, 调用要用类，而不是实例
+	        console.log('hello world');
+	      }
+	    }]);
+
+	    return _Parent6;
+	  }();
+
+	  _Parent6.tell(); // 'hello world'
+	  // 要用class声明的类来调用static声明的静态方法，而不是用new出来的实例调用
 	}
 
 	{
-	  // 使用set 做数组去重
-	  var arr = [1, 2, 5, 3, 3, 3, 1, 10, 10];
-	  var arrSet = new Set(arr);
-	  console.log(new (Function.prototype.bind.apply(Array, [null].concat(_toConsumableArray(arrSet))))()); // [1, 2, 5, 3, 10]
-	  console.log([].concat(_toConsumableArray(arrSet))); // [1, 2, 5, 3, 10]
-	  console.log(Array.from(arrSet)); // [1, 2, 5, 3, 10]
-	  console.log([].concat(_toConsumableArray(new Set(arr)))); // [1, 2, 5, 3, 10]
-	}
+	  // 静态属性
+	  var _Parent7 = function () {
+	    function _Parent7() {
+	      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'cg';
 
-	{
-	  // WeakSet 数据类型
-	  /**
-	   * WeakSet 和 Set 的区别：
-	   * 1.支持的元素类型不一样：weakSet 的元素只能是引用类型
-	   * 2.weakSet 中的对象是弱引用，存的是地址，不会检测改地址的内容是否被垃圾回收掉了
-	   * 3.weakSet 没有 clear,size,不能遍历
-	   */
-	  var weakList = new WeakSet();
-	  var arg = {};
-	  weakList.add(arg); //weakSet中的元素只能是引用类型
-	  weakList.add(function () {});
-	  weakList.add([]);
-	  console.log(weakList); // [Object, function, Array]
-	}
+	      _classCallCheck(this, _Parent7);
 
-	{
-	  // Map 数据类型, key 可以是任何数据类型
-	  // Map 的第一种定义方式
-	  var map = new Map();
-	  var _arr5 = [1, 2, 3];
-	  map.set(_arr5, 456);
-	  console.log('map', map); // key 为 [1,2,3], value 为 456
-	  console.log('map.get', map.get(_arr5)); //456
-	}
+	      this.name = name;
+	      this.age = 18;
+	    }
 
-	{
-	  // Map 的第二种定义方式
-	  // Map 的 api 有['set', 'size', 'delete', 'clear', 'has']
-	  var _map = new Map([['a', 123], ['b', 456]]);
-	  console.log('map args', _map); //{"a" => 123, "b" => 456}
-	  console.log('size', _map.size); // 2
-	  console.log('delete', _map.delete('a'), _map);
-	  // true ,delete成功返回true，  {"b" => 456}
-	  console.log('has', _map.has('b')); // true
-	  console.log('clear', _map.clear(), _map);
-	  // undefined, clear成功返回undefined, {}
-	}
+	    _createClass(_Parent7, [{
+	      key: '_self',
+	      value: function _self() {
+	        // 私有方法
+	        return 'self';
+	      }
+	    }]);
 
-	{
-	  // WeakMap 数据类型
-	  /**
-	   * WeakMap 和 Map 的区别：
-	   * 1.支持的元素类型不一样: WeakMap 中的key只能是引用类型
-	   * 2.weakSet 中的key是弱引用，存的是地址，不会检测改地址的内容是否被垃圾回收掉了
-	   * 3.weakSet 没有 clear,size,不能遍历
-	   */
-	  var weakMap = new WeakMap();
-	  var obj = {};
-	  weakMap.set(obj, 123);
-	  console.log('WeakMap.get', weakMap.get(obj)); // 123
-	}
+	    return _Parent7;
+	  }();
 
-	{
-	  // Map Array 横向对比api：增，查，改，删
-	  var _map2 = new Map();
-	  var array = [];
+	  _Parent7.type = 'test'; // 直接在类上添加静态方法
 
-	  // 增
-	  _map2.set('t', 1);
-	  array.push({ t: 1 });
-	  console.info('map-array增', _map2, array);
-	  // {"t" => 1},  [{t: 1}]
-
-	  // 查
-	  var map_exist = _map2.has('t');
-	  var array_exist = array.find(function (item) {
-	    return item['t'];
-	  });
-	  console.info('map-array查', map_exist, array_exist);
-	  // true, {t: 1}, map 的 has 方法返回Boolean, array 的 find 方法返回该元素(undefined)
-
-	  // 改
-	  _map2.set('t', 2);
-	  array.forEach(function (item) {
-	    return item.t ? item.t = 2 : '';
-	  });
-	  console.info('map-array改', _map2, array);
-	  // {"t" => 2},  [{t: 2}]
-
-	  // 删
-	  _map2.delete('t');
-	  var index = array.findIndex(function (item) {
-	    return item.t;
-	  });
-	  array.splice(index, 1);
-	  console.info('map-array删', _map2, array);
-	  // {}, []
-
-	  /**
-	   * 总结，Map 比 Array 更好用，增删改查非常方便
-	   */
-	}
-
-	{
-	  // Set Array 横向对比api：增，查，改，删
-	  var set = new Set();
-	  var _array = [];
-	  var _obj = { t: 1 };
-
-	  // 增
-	  set.add(_obj);
-	  _array.push(_obj);
-	  console.info('set-array增', set, _array);
-	  // {t: 1},  [{t: 1}]
-
-	  // 查
-	  var set_exist = set.has(_obj);
-	  var _array_exist = _array.find(function (item) {
-	    return item.t;
-	  });
-	  console.info('set-array查', set_exist, _array_exist);
-	  // true, {t:1} ,set 的 has 方法返回Boolean值，array的find方法返回该元素
-
-	  // 改
-	  set.forEach(function (item) {
-	    return item.t ? item.t = 2 : '';
-	  });
-	  _array.forEach(function (item) {
-	    return item.t ? item.t = 2 : '';
-	  });
-	  console.info('set-array改', set, _array);
-	  // {t: 2},  [{t: 2}]
-
-	  // 删
-	  set.forEach(function (item) {
-	    return item.t ? set.delete(item) : '';
-	  });
-	  var _index = _array.findIndex(function (item) {
-	    return item.t;
-	  });
-	  _array.splice(_index, 1);
-	  console.info('set-array删', set, _array);
-	  // {}, []
-
-	  /**
-	   * 总结：set 和 array 的增删改查都比较麻烦，还是 map 最方便
-	   */
-	}
-
-	{
-	  // map set object 的横向对比：增，查，改，删
-	  var item = { t: 1 };
-	  var _map3 = new Map();
-	  var _set = new Set();
-	  var _obj2 = {};
-
-	  // 增
-	  _map3.set('t', 1);
-	  _set.add(item);
-	  _obj2.t = 1;
-	  console.info('map-set-obj增', _map3, _set, _obj2);
-	  // Map(1) {"t" => 1} ,Set(1) {{t: 1}}, {t: 1}
-
-	  // 查
-	  console.log({
-	    map_exist: _map3.has('t'),
-	    set_exist: _set.has(item),
-	    obj_exist: 't' in _obj2
-	  });
-	  // true, true, true
-
-	  // 改
-	  _map3.set('t', 2);
-	  item.t = 2;
-	  _obj2.t = 2;
-	  console.log('map-set-obj改', _map3, _set, _obj2);
-	  // Map(1) {"t" => 2} ,Set(1) {{t: 2}}, {t: 2}
-
-	  // 删
-	  _map3.delete('t');
-	  _set.delete(item);
-	  delete _obj2.t;
-	  console.log('map-set-obj删', _map3, _set, _obj2);
-	  // Map(0) {} ,Set(0) {} ,{}
-
-	  /**
-	   * 总结，
-	   * 1. map,set,objext 三者，map 的增查改删最方便
-	   * 2. 开发中，优先使用 map ，因为增查改删最方便
-	   * 3. 如果数据要求不重复，就用 set
-	   * 4. ES6 推荐使用 map，set,尽量放弃使用object
-	   */
+	  console.log('静态属性', _Parent7.type); // test
+	  console.log('私有方法', new _Parent7()._self()); // self
 	}
 
 /***/ })

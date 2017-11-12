@@ -4,5 +4,6 @@
 // import './class/lesson4 字符串扩展.js';
 // import './class/lesson6 数组扩展.js';
 // import './class/lesson7 函数扩展.js';
-import './class/lesson10 set-map数据结构';
-// import './class/lesson11 Proxy和Reflect';
+// import './class/lesson10 set-map数据结构.js';
+// import './class/lesson11 Proxy和Reflect.js';
+import './class/lesson12 class类.js';
