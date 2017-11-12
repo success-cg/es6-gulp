@@ -6,4 +6,5 @@
 // import './class/lesson7 函数扩展.js';
 // import './class/lesson10 set-map数据结构.js';
 // import './class/lesson11 Proxy和Reflect.js';
-import './class/lesson12 class类.js';
+// import './class/lesson12 class类.js';
+import './class/lesson13 Promise.js';
