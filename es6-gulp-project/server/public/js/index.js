@@ -205,7 +205,7 @@
 	  var person = new Person('lilei', 30);
 	  person.age = 20; //set的age必须为number且大于18
 	  person.name = '9527'; //set的name必须为string类型
-	  console.log(person);
+	  console.log(person); // Proxy {name: "9527", age: 20}
 	}
 
 /***/ })
