@@ -61,6 +61,9 @@
 
 	'use strict';
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	// Proxy 的用法
 	{
 	  var obj = {
 	    time: '2017-11-11',
@@ -111,6 +114,16 @@
 	      } else {
 	        return target[key];
 	      }
+	    },
+
+
+	    //代理 Object.keys ,Object.getOwnPropertySymbols, Object.getOwnPropertyNames
+	    ownKeys: function ownKeys(target) {
+	      //target为代理的obj
+	      console.log('ownKeys-arguments', arguments); //arguments的长度为1
+	      return Object.keys(target).filter(function (item) {
+	        return item !== 'time';
+	      });
 	    }
 	  });
 
@@ -120,9 +133,79 @@
 	  console.log('set', monitor); //name设置成了'ly',而_r仍然为123，没有变成456
 	  console.log('has', 'name' in monitor, 'time' in monitor); // true false 只能查到name，隐藏了time和_r
 
+	  console.log('ownKeys', Object.keys(monitor)); //["name", "_r"], time被隐藏了
 	  delete monitor.time;
 	  delete monitor._r;
 	  console.log('delete', monitor); //time属性没有删除，_r属性删除了
+	}
+
+	//Reflect 的用法,用法api和Proxy一样
+	{
+	  var _obj = {
+	    time: '2017-11-11',
+	    name: 'cg',
+	    _r: 123
+	  };
+
+	  console.log('Reflect get', Reflect.get(_obj, 'time')); //2017-11-11
+	  //Reflect 的 set 方法
+	  Reflect.set(_obj, 'name', 'mukewang');
+	  console.log(_obj.name); //mukewang
+	  console.log('Reflect has', Reflect.has(_obj, 'name')); //true
+	}
+
+	// Proxy 和 Reflect 的实际应用例子，对数据做校验，可以做解耦，非常方便
+	{
+	  var validator = function validator(target, _validator) {
+	    return new Proxy(target, {
+	      _validator: _validator,
+	      set: function set(target, key, value, proxy) {
+	        if (target.hasOwnProperty(key)) {
+	          var va = this._validator[key];
+	          console.log(va);
+	          if (!!va(value)) {
+	            //只要该属性符合校验，才能set设置
+	            return Reflect.set(target, key, value, proxy);
+	          } else {
+	            throw Error('\u4E0D\u80FD\u8BBE\u7F6E' + key + '\u5230' + value);
+	          }
+	        } else {
+	          throw Error(key + '\u4E0D\u5B58\u5728');
+	        }
+	      }
+	    });
+	  };
+
+	  // 校验规则
+
+
+	  var personValidators = {
+	    name: function name(val) {
+	      //set的name必须为string类型
+	      return typeof val === 'string';
+	    },
+	    age: function age(val) {
+	      //set的age必须为number且大于18
+	      return typeof val === 'number' && val > 18;
+	    }
+	    // ... 增加新的校验规则，比如
+	    // mobile(val) {...}
+
+	  };
+
+	  var Person = function Person(name, age) {
+	    _classCallCheck(this, Person);
+
+	    this.name = name;
+	    this.age = age;
+	    // 重点！返回代理的Proxy对象
+	    return validator(this, personValidators);
+	  };
+
+	  var person = new Person('lilei', 30);
+	  person.age = 20; //set的age必须为number且大于18
+	  person.name = '9527'; //set的name必须为string类型
+	  console.log(person);
 	}
 
 /***/ })
