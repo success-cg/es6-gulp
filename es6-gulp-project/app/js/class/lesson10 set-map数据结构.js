@@ -127,3 +127,119 @@
   weakMap.set(obj, 123);
   console.log('WeakMap.get', weakMap.get(obj)); // 123
 }
+
+{
+  // Map Array 横向对比api：增，查，改，删
+  let map = new Map();
+  let array = [];
+
+  // 增
+  map.set('t',1);
+  array.push({t:1});
+  console.info('map-array增', map, array);
+  // {"t" => 1},  [{t: 1}]
+
+  // 查
+  let map_exist = map.has('t');
+  let array_exist = array.find(item=>item['t'])
+  console.info('map-array查', map_exist, array_exist);
+  // true, {t: 1}, map 的 has 方法返回Boolean, array 的 find 方法返回该元素(undefined)
+
+  // 改
+  map.set('t',2);
+  array.forEach(item=>item.t?item.t=2:'');
+  console.info('map-array改', map, array);
+  // {"t" => 2},  [{t: 2}]
+
+  // 删
+  map.delete('t');
+  let index = array.findIndex(item=>item.t)
+  array.splice(index, 1)
+  console.info('map-array删', map, array);
+  // {}, []
+
+  /**
+   * 总结，Map 比 Array 更好用，增删改查非常方便
+   */
+}
+
+{
+  // Set Array 横向对比api：增，查，改，删
+  let set = new Set();
+  let array = [];
+  let obj = {t: 1};
+
+  // 增
+  set.add(obj);
+  array.push(obj);
+  console.info('set-array增', set, array);
+  // {t: 1},  [{t: 1}]
+
+  // 查
+  let set_exist = set.has(obj);
+  let array_exist = array.find(item=>item.t)
+  console.info('set-array查', set_exist, array_exist);
+  // true, {t:1} ,set 的 has 方法返回Boolean值，array的find方法返回该元素
+
+  // 改
+  set.forEach(item=>item.t?item.t=2:'');
+  array.forEach(item=>item.t?item.t=2:'');
+  console.info('set-array改', set, array);
+  // {t: 2},  [{t: 2}]
+
+  // 删
+  set.forEach(item=>item.t?set.delete(item):'');
+  let index = array.findIndex(item=>item.t);
+  array.splice(index, 1);
+  console.info('set-array删', set, array);
+  // {}, []
+
+  /**
+   * 总结：set 和 array 的增删改查都比较麻烦，还是 map 最方便
+   */
+}
+
+{
+  // map set object 的横向对比：增，查，改，删
+  let item = {t: 1};
+  let map = new Map();
+  let set = new Set();
+  let obj = {};
+
+  // 增
+  map.set('t', 1);
+  set.add(item);
+  obj.t = 1;
+  console.info('map-set-obj增', map, set, obj);
+  // Map(1) {"t" => 1} ,Set(1) {{t: 1}}, {t: 1}
+
+  // 查
+  console.log({
+    map_exist: map.has('t'),
+    set_exist: set.has(item),
+    obj_exist: 't' in obj
+  });
+  // true, true, true
+
+  // 改
+  map.set('t', 2);
+  item.t = 2;
+  obj.t = 2;
+  console.log('map-set-obj改', map, set, obj);
+  // Map(1) {"t" => 2} ,Set(1) {{t: 2}}, {t: 2}
+
+  // 删
+  map.delete('t');
+  set.delete(item);
+  delete obj.t;
+  console.log('map-set-obj删', map, set, obj);
+  // Map(0) {} ,Set(0) {} ,{}
+
+  /**
+   * 总结，
+   * 1. map,set,objext 三者，map 的增查改删最方便
+   * 2. 开发中，优先使用 map ，因为增查改删最方便
+   * 3. 如果数据要求不重复，就用 set
+   * 4. ES6 推荐使用 map，set,尽量放弃使用object
+   */
+}

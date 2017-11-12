@@ -283,5 +283,137 @@
 	  console.log('WeakMap.get', weakMap.get(obj)); // 123
 	}
 
+	{
+	  // Map Array 横向对比api：增，查，改，删
+	  var _map2 = new Map();
+	  var array = [];
+
+	  // 增
+	  _map2.set('t', 1);
+	  array.push({ t: 1 });
+	  console.info('map-array增', _map2, array);
+	  // {"t" => 1},  [{t: 1}]
+
+	  // 查
+	  var map_exist = _map2.has('t');
+	  var array_exist = array.find(function (item) {
+	    return item['t'];
+	  });
+	  console.info('map-array查', map_exist, array_exist);
+	  // true, {t: 1}, map 的 has 方法返回Boolean, array 的 find 方法返回该元素(undefined)
+
+	  // 改
+	  _map2.set('t', 2);
+	  array.forEach(function (item) {
+	    return item.t ? item.t = 2 : '';
+	  });
+	  console.info('map-array改', _map2, array);
+	  // {"t" => 2},  [{t: 2}]
+
+	  // 删
+	  _map2.delete('t');
+	  var index = array.findIndex(function (item) {
+	    return item.t;
+	  });
+	  array.splice(index, 1);
+	  console.info('map-array删', _map2, array);
+	  // {}, []
+
+	  /**
+	   * 总结，Map 比 Array 更好用，增删改查非常方便
+	   */
+	}
+
+	{
+	  // Set Array 横向对比api：增，查，改，删
+	  var set = new Set();
+	  var _array = [];
+	  var _obj = { t: 1 };
+
+	  // 增
+	  set.add(_obj);
+	  _array.push(_obj);
+	  console.info('set-array增', set, _array);
+	  // {t: 1},  [{t: 1}]
+
+	  // 查
+	  var set_exist = set.has(_obj);
+	  var _array_exist = _array.find(function (item) {
+	    return item.t;
+	  });
+	  console.info('set-array查', set_exist, _array_exist);
+	  // true, {t:1} ,set 的 has 方法返回Boolean值，array的find方法返回该元素
+
+	  // 改
+	  set.forEach(function (item) {
+	    return item.t ? item.t = 2 : '';
+	  });
+	  _array.forEach(function (item) {
+	    return item.t ? item.t = 2 : '';
+	  });
+	  console.info('set-array改', set, _array);
+	  // {t: 2},  [{t: 2}]
+
+	  // 删
+	  set.forEach(function (item) {
+	    return item.t ? set.delete(item) : '';
+	  });
+	  var _index = _array.findIndex(function (item) {
+	    return item.t;
+	  });
+	  _array.splice(_index, 1);
+	  console.info('set-array删', set, _array);
+	  // {}, []
+
+	  /**
+	   * 总结：set 和 array 的增删改查都比较麻烦，还是 map 最方便
+	   */
+	}
+
+	{
+	  // map set object 的横向对比：增，查，改，删
+	  var item = { t: 1 };
+	  var _map3 = new Map();
+	  var _set = new Set();
+	  var _obj2 = {};
+
+	  // 增
+	  _map3.set('t', 1);
+	  _set.add(item);
+	  _obj2.t = 1;
+	  console.info('map-set-obj增', _map3, _set, _obj2);
+	  // Map(1) {"t" => 1} ,Set(1) {{t: 1}}, {t: 1}
+
+	  // 查
+	  console.log({
+	    map_exist: _map3.has('t'),
+	    set_exist: _set.has(item),
+	    obj_exist: 't' in _obj2
+	  });
+	  // true, true, true
+
+	  // 改
+	  _map3.set('t', 2);
+	  item.t = 2;
+	  _obj2.t = 2;
+	  console.log('map-set-obj改', _map3, _set, _obj2);
+	  // Map(1) {"t" => 2} ,Set(1) {{t: 2}}, {t: 2}
+
+	  // 删
+	  _map3.delete('t');
+	  _set.delete(item);
+	  delete _obj2.t;
+	  console.log('map-set-obj删', _map3, _set, _obj2);
+	  // Map(0) {} ,Set(0) {} ,{}
+
+	  /**
+	   * 总结，
+	   * 1. map,set,objext 三者，map 的增查改删最方便
+	   * 2. 开发中，优先使用 map ，因为增查改删最方便
+	   * 3. 如果数据要求不重复，就用 set
+	   * 4. ES6 推荐使用 map，set,尽量放弃使用object
+	   */
+	}
+
 /***/ })
 /******/ ]);
