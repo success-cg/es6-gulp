@@ -137,5 +137,33 @@
 	  });
 	}
 
+	{
+	  // Promise.all 的应用举例
+	  // 所有图片都加载完再添加到页面
+	  var loadImg = function loadImg(url) {
+	    return new Promise(function (resolve, reject) {
+	      var img = document.createElement('img');
+	      img.src = url;
+	      img.addEventListener('load', function () {
+	        resolve(img); // 要把参数 img 传到下面的步骤去
+	      });
+	      img.addEventListener('error', function (err) {
+	        reject(err);
+	      });
+	    });
+	  };
+
+	  var showImgs = function showImgs(imgs) {
+	    console.log('imgs', imgs); // [img, img, img]
+	    imgs.forEach(function (img) {
+	      document.body.appendChild(img);
+	    });
+	  };
+
+	  Promise.all([loadImg('http://f12.baidu.com/it/u=2881303562,336932824&fm=72'), loadImg('http://img4.imgtn.bdimg.com/it/u=347082810,1094684650&fm=11&gp=0.jpg'), loadImg('http://img3.imgtn.bdimg.com/it/u=4187903139,2134569676&fm=11&gp=0.jpg')]).then(showImgs); //三张图片都加载完了，再一起渲染出来
+	  // Promise.all 接受一个数组，数组内的每一项都是 Promise, 每一项里的resolve里的参数会组成一个参数数组
+	  // then 方法中能接受到该 参数数组
+	}
+
 /***/ })
 /******/ ]);
