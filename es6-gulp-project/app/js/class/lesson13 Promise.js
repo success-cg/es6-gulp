@@ -108,3 +108,34 @@
   // then 方法中能接受到该 参数数组
 
 }
+
+{
+  // Promise.race 的应用举例
+  // 有一张图片加载完毕就渲染，(谁加载快就渲染谁)
+  function loadImg(url){
+    return new Promise((resolve, reject)=>{
+      let img = document.createElement('img');
+      img.src = url;
+      img.addEventListener('load', ()=>{
+        resolve(img) // 要把参数 img 传到下面的步骤去
+      })
+      img.addEventListener('error', (err)=>{
+        reject(err)
+      })
+    })
+  }
+
+  function showImgs(img){
+    let p = document.createElement('p');
+    p.appendChild(img);
+    console.log('img', img);
+    document.body.appendChild(p);
+  }
+
+  Promise.race([
+    loadImg('http://f12.baidu.com/it/u=2881303562,336932824&fm=72'),
+    loadImg('http://img4.imgtn.bdimg.com/it/u=347082810,1094684650&fm=11&gp=0.jpg'),
+    loadImg('http://img3.imgtn.bdimg.com/it/u=4187903139,2134569676&fm=11&gp=0.jpg')
+  ]).then(showImgs) //三张图片，谁先加载完，就渲染谁
+
+}
