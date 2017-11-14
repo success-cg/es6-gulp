@@ -100,20 +100,22 @@
 
 {
   // Generator 应用实例，长轮询，模拟不断请求 ajax
+  // 定义 generator 函数
   let ajax = function* (){
     yield new Promise((resolve, reject)=>{
       // 模拟 ajax 的业务逻辑, 应用中替换为 ajax 请求真实的接口
       setTimeout(()=>{
-        resolve({code: 0 });
+        resolve({code: 0 }); // 模拟返回接口的状态码
       }, 200);
     })
   }
 
+  // 定义轮询函数
   let pull = function(){
     let generator = ajax();
     let step = generator.next();
     step.value.then(function(d){
-      if (d.code!==0) {
+      if (d.code!==0) { // 判断接口的状态码
         setTimeout(()=>{
           console.info('wait');
           pull()

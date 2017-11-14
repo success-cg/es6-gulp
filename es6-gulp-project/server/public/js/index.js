@@ -9400,6 +9400,7 @@
 
 	{
 	  // Generator 应用实例，长轮询，模拟不断请求 ajax
+	  // 定义 generator 函数
 	  var ajax = /*#__PURE__*/regeneratorRuntime.mark(function ajax() {
 	    return regeneratorRuntime.wrap(function ajax$(_context5) {
 	      while (1) {
@@ -9409,7 +9410,7 @@
 	            return new Promise(function (resolve, reject) {
 	              // 模拟 ajax 的业务逻辑, 应用中替换为 ajax 请求真实的接口
 	              setTimeout(function () {
-	                resolve({ code: 0 });
+	                resolve({ code: 0 }); // 模拟返回接口的状态码
 	              }, 200);
 	            });
 
@@ -9421,11 +9422,13 @@
 	    }, ajax, this);
 	  });
 
+	  // 定义轮询函数
 	  var pull = function pull() {
 	    var generator = ajax();
 	    var step = generator.next();
 	    step.value.then(function (d) {
 	      if (d.code !== 0) {
+	        // 判断接口的状态码
 	        setTimeout(function () {
 	          console.info('wait');
 	          pull();
