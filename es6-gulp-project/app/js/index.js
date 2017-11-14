@@ -11,4 +11,5 @@ import babel from 'babel-polyfill';
 // import './class/lesson12 class类.js';
 // import './class/lesson13 Promise.js';
 // import './class/lesson14 Iterator.js';
-import './class/lesson15 Generator.js';
+// import './class/lesson15 Generator.js';
+import './class/lesson16 Decorator.js';
