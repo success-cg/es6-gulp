@@ -57,45 +57,11 @@
 
 	var _babelPolyfill2 = _interopRequireDefault(_babelPolyfill);
 
-	var _lesson = __webpack_require__(328);
+	var _lottery = __webpack_require__(328);
 
-	var me = _interopRequireWildcard(_lesson);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	var _lottery2 = _interopRequireDefault(_lottery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// 具名导入，需要用对象的解构赋值
-	console.log({
-	  name: _lesson.name,
-	  test: _lesson.test,
-	  Person: _lesson.Person
-	}); // {name: "cg", test: ƒ, Person: ƒ}
-
-	// import './class/lesson1 let const.js';
-	// import './class/lesson2 解构赋值.js';
-	// import './class/lesson3 正则扩展.js';
-	// import './class/lesson4 字符串扩展.js';
-	// import './class/lesson6 数组扩展.js';
-	// import './class/lesson7 函数扩展.js';
-	// import './class/lesson10 set-map数据结构.js';
-	// import './class/lesson11 Proxy和Reflect.js';
-	// import './class/lesson12 class类.js';
-	// import './class/lesson13 Promise.js';
-	// import './class/lesson14 Iterator.js';
-	// import './class/lesson15 Generator.js';
-	// import './class/lesson16 Decorator.js';
-
-	// 具名的全部倒入, * 表示全部导入，as 是关键字，表示起别名，这里别名为 me
-
-	console.log('me', me, {
-	  name: me.name,
-	  test: me.test,
-	  Person: me.Person
-	}); // {name: "cg", test: ƒ, Person: ƒ}
-
-	// 匿名的全部倒入，可以自己给模块起名，推荐！！！
-	console.log('default', me.default);
 
 /***/ }),
 /* 2 */
@@ -9230,80 +9196,53 @@
 
 /***/ }),
 /* 328 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	__webpack_require__(329);
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	__webpack_require__(330);
 
-	exports.test = test;
+	__webpack_require__(331);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	__webpack_require__(332);
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports) {
 
 	/**
-	 *  ES6 模块化
+	 * 彩票页面基本模块
 	 */
+	"use strict";
 
-	// *************************
+/***/ }),
+/* 330 */
+/***/ (function(module, exports) {
 
-	// 具名 export 导出
-	var name = exports.name = 'cg';
+	/**
+	 * 计时器模块
+	 */
+	"use strict";
 
-	function test() {
-	  console.log('test');
-	}
+/***/ }),
+/* 331 */
+/***/ (function(module, exports) {
 
-	var Person = exports.Person = function () {
-	  function Person() {
-	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'ly';
-	    var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 18;
+	/**
+	 * 计算模块
+	 */
+	"use strict";
 
-	    _classCallCheck(this, Person);
+/***/ }),
+/* 332 */
+/***/ (function(module, exports) {
 
-	    this.name = name;
-	    this.age = age;
-	  }
-
-	  _createClass(Person, [{
-	    key: 'say',
-	    value: function say() {
-	      console.log('say', this.name);
-	    }
-	  }]);
-
-	  return Person;
-	}();
-
-	// *************************
-
-	// 匿名 export 导出
-
-
-	var student = '小明';
-
-	function play() {
-	  console.log('play game');
-	}
-
-	var school = function school() {
-	  var teacher = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'frank';
-	  var lesson = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'English';
-
-	  _classCallCheck(this, school);
-
-	  this.teacher = teacher;
-	  this.lesson = lesson;
-	};
-
-	exports.default = {
-	  student: student,
-	  play: play,
-	  school: school
-	};
+	/**
+	 * 接口模块
+	 */
+	"use strict";
 
 /***/ })
 /******/ ]);

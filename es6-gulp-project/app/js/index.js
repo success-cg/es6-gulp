@@ -1,4 +1,9 @@
+// ES6 兼容插件
 import babel from 'babel-polyfill';
+
+// 引入彩票业务
+import Lottery from './lottery.js';
+
 
 // import './class/lesson1 let const.js';
 // import './class/lesson2 解构赋值.js';
@@ -14,23 +19,23 @@ import babel from 'babel-polyfill';
 // import './class/lesson15 Generator.js';
 // import './class/lesson16 Decorator.js';
 
-import {name, test, Person} from './class/lesson17 模块化.js';
-// 具名导入，需要用对象的解构赋值
-console.log({
-  name,
-  test,
-  Person
-});   // {name: "cg", test: ƒ, Person: ƒ}
-
-import * as me from './class/lesson17 模块化.js';
-// 具名的全部倒入, * 表示全部导入，as 是关键字，表示起别名，这里别名为 me
-
-console.log('me', me, {
-  name: me.name,
-  test: me.test,
-  Person: me.Person
-});  // {name: "cg", test: ƒ, Person: ƒ}
-
-import xxx from './class/lesson17 模块化.js';
-// 匿名的全部倒入，可以自己给模块起名，推荐！！！
-console.log('default', xxx);
+// import {name, test, Person} from './class/lesson17 模块化.js';
+// // 具名导入，需要用对象的解构赋值
+// console.log({
+//   name,
+//   test,
+//   Person
+// });   // {name: "cg", test: ƒ, Person: ƒ}
+//
+// import * as me from './class/lesson17 模块化.js';
+// // 具名的全部倒入, * 表示全部导入，as 是关键字，表示起别名，这里别名为 me
+//
+// console.log('me', me, {
+//   name: me.name,
+//   test: me.test,
+//   Person: me.Person
+// });  // {name: "cg", test: ƒ, Person: ƒ}
+//
+// import xxx from './class/lesson17 模块化.js';
+// // 匿名的全部倒入，可以自己给模块起名，推荐！！！
+// console.log('default', xxx);
