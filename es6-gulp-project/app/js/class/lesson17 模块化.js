@@ -31,6 +31,7 @@ function play(){
   console.log('play game');
 }
 
+
 class school {
   constructor(teacher='frank', lesson='English'){
     this.teacher = teacher;

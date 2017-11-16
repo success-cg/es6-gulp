@@ -81,8 +81,8 @@
   // 所有图片都加载完再添加到页面
   function loadImg(url){
     return new Promise((resolve, reject)=>{
-      let img = document.createElement('img');
-      img.src = url;
+      let img = document.createElement('img')
+      img.src = url
       img.addEventListener('load', ()=>{
         resolve(img) // 要把参数 img 传到下面的步骤去
       })
