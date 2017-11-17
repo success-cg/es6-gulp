@@ -3,6 +3,6 @@
  */
 
 import './lottery/base.js';
-import './lottery/timer.js';
+import Timer from './lottery/timer.js';
 import './lottery/calculate.js';
-import './lottery/interface.js';
+import Interface from './lottery/interface.js';
