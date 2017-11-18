@@ -9360,7 +9360,7 @@
 	          }
 	        }
 	      })(arr, size, []);
-	      return allResult.length;
+	      return allResult;
 	    }
 	  }]);
 
