@@ -9295,10 +9295,77 @@
 /* 331 */
 /***/ (function(module, exports) {
 
-	/**
-	 * 计算模块
-	 */
-	"use strict";
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/*计算模块*/
+
+	var Calculate = function () {
+	  function Calculate() {
+	    _classCallCheck(this, Calculate);
+	  }
+
+	  _createClass(Calculate, [{
+	    key: 'computeCount',
+
+	    /**
+	     * 计算注数
+	     * @param active [number] 当前选中的号码
+	     * @param play_name [string] 当前的玩法标识
+	     * @return [number] 注数
+	     */
+	    value: function computeCount(active, play_name) {
+	      var count = 0; //初始注数为0
+	      var exist = this.play_list.has(play_name); //play_list 玩法列表，map 类型，在别处写好，
+	      var arr = new Array(active).fill('0'); //生成长度为 active，每个元素为'0'的数组
+	      if (exist && play_name.at(0) === 'r') {
+	        //玩法存在，并且玩法是组合(玩法名是'r')
+	        count = Calculate.combine(arr, play_name.split('')[1]); //count 进行组合运算得到，combine为class的static方法，在下面定义
+	      }
+	      return count;
+	    }
+
+	    /**
+	     * 组合运算
+	     * @param arr [array] 参与组合运算的数组
+	     * @param size [number] 组合运算的基数
+	     * @return [number] 计算注数
+	     * 比如 arr=[1,2,3,4], size=2，结果就是 6 (4C2,4选2)，排列组合
+	     */
+
+	  }], [{
+	    key: 'combine',
+	    value: function combine(arr, size) {
+	      var allResult = []; //保存最后的结果
+	      (function f(arr, size, result) {
+	        //立即执行函数，做递归，进行组合运算
+	        var arrLen = arr.length;
+	        if (arrLen < size) return; //如果基数大于数组长度，则截止递归运算
+	        if (arrLen === size) {
+	          allResult.push([].concat(result, arr));
+	        } else {
+	          for (var i = 0; i < arrLen; i++) {
+	            var newResult = [].concat(result);
+	            newResult.push(arr[i]);
+	            if (1 === size) {
+	              allResult.push(newResult);
+	            } else {
+	              var newArr = [].concat(arr);
+	              newArr.splice(0, i + 1);
+	              f(newArr, size - 1, newResult);
+	            }
+	          }
+	        }
+	      })(arr, size, []);
+	      return allResult.length;
+	    }
+	  }]);
+
+	  return Calculate;
+	}();
 
 /***/ }),
 /* 332 */
