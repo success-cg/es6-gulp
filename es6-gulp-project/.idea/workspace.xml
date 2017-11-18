@@ -14,13 +14,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="calculate.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/js/lottery/calculate.js">
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="47" column="27" lean-forward="false" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+            <state relative-caret-position="418">
+              <caret line="104" column="1" lean-forward="false" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
+                <element signature="e#146#272#0" expanded="false" />
+                <element signature="e#293#421#0" expanded="false" />
+                <element signature="e#442#570#0" expanded="false" />
+                <element signature="e#591#721#0" expanded="false" />
+                <element signature="e#742#870#0" expanded="false" />
+                <element signature="e#891#1019#0" expanded="false" />
+                <element signature="e#1040#1166#0" expanded="false" />
+                <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
+                <element signature="e#1247#1358#0" expanded="false" />
+                <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
+                <element signature="e#1442#1457#0" expanded="false" />
+                <element signature="e#1483#1512#0" expanded="false" />
+                <element signature="e#1540#1560#0" expanded="false" />
+                <element signature="e#1607#1648#0" expanded="false" />
+                <element signature="e#1653#1676#0" expanded="false" />
+                <element signature="e#1725#1774#0" expanded="false" />
+                <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
+                <element signature="e#1905#1918#0" expanded="false" />
+                <element signature="e#1951#1961#0" expanded="false" />
+                <element signature="e#1998#2037#0" expanded="false" />
+                <element signature="e#2042#2054#0" expanded="false" />
+                <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -41,6 +68,8 @@
     <findStrings>
       <find>540</find>
       <find>plays</find>
+      <find>玩法提示</find>
+      <find>values</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -62,9 +91,10 @@
         <option value="$PROJECT_DIR$/server/public/js/cp.min.js" />
         <option value="$PROJECT_DIR$/server/public/js/index.js" />
         <option value="$PROJECT_DIR$/app/js/lottery/interface.js" />
-        <option value="$PROJECT_DIR$/app/js/lottery.js" />
         <option value="$PROJECT_DIR$/app/views/test.js" />
+        <option value="$PROJECT_DIR$/app/js/lottery.js" />
         <option value="$PROJECT_DIR$/app/js/lottery/calculate.js" />
+        <option value="$PROJECT_DIR$/app/js/lottery/base.js" />
       </list>
     </option>
   </component>
@@ -215,6 +245,13 @@
               <item name="es6-gulp-project" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="class" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="es6-gulp-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="es6-gulp-project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="lottery" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -238,7 +275,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.JavaScript" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/chengong/workspace/es6-gulp/es6-gulp-project/app/views/index.ejs&#10;reformat&#9;ACTION&#9;ReformatCode" />
+    <property name="SearchEverywhereHistoryKey" value="getCount&#9;ACTION&#9;null&#10;reformat&#9;ACTION&#9;ReformatCode" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
@@ -274,12 +311,12 @@
       <workItem from="1510764049817" duration="3659000" />
       <workItem from="1510769839470" duration="20000" />
       <workItem from="1510769887174" duration="1456000" />
-      <workItem from="1510789242579" duration="25262000" />
+      <workItem from="1510789242579" duration="32215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32738000" />
+    <option name="totallyTimeSpent" value="39691000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -484,25 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/timer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#24#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -516,16 +534,6 @@
         <state relative-caret-position="227">
           <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,14 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -571,12 +571,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/calculate.js">
+    <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="47" column="27" lean-forward="false" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+        <state relative-caret-position="132">
+          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/timer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="93" column="61" lean-forward="true" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/calculate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="86" column="18" lean-forward="true" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/class/lesson10 set-map数据结构.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="104" column="1" lean-forward="false" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
+            <element signature="e#146#272#0" expanded="false" />
+            <element signature="e#293#421#0" expanded="false" />
+            <element signature="e#442#570#0" expanded="false" />
+            <element signature="e#591#721#0" expanded="false" />
+            <element signature="e#742#870#0" expanded="false" />
+            <element signature="e#891#1019#0" expanded="false" />
+            <element signature="e#1040#1166#0" expanded="false" />
+            <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
+            <element signature="e#1247#1358#0" expanded="false" />
+            <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
+            <element signature="e#1442#1457#0" expanded="false" />
+            <element signature="e#1483#1512#0" expanded="false" />
+            <element signature="e#1540#1560#0" expanded="false" />
+            <element signature="e#1607#1648#0" expanded="false" />
+            <element signature="e#1653#1676#0" expanded="false" />
+            <element signature="e#1725#1774#0" expanded="false" />
+            <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
+            <element signature="e#1905#1918#0" expanded="false" />
+            <element signature="e#1951#1961#0" expanded="false" />
+            <element signature="e#1998#2037#0" expanded="false" />
+            <element signature="e#2042#2054#0" expanded="false" />
+            <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
           </folding>
         </state>
       </provider>

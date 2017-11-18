@@ -9202,13 +9202,15 @@
 
 	__webpack_require__(329);
 
-	var _timer = __webpack_require__(330);
+	var _timer = __webpack_require__(331);
 
 	var _timer2 = _interopRequireDefault(_timer);
 
-	__webpack_require__(331);
+	var _calculate = __webpack_require__(332);
 
-	var _interface = __webpack_require__(332);
+	var _calculate2 = _interopRequireDefault(_calculate);
+
+	var _interface = __webpack_require__(333);
 
 	var _interface2 = _interopRequireDefault(_interface);
 
@@ -9216,172 +9218,15 @@
 
 /***/ }),
 /* 329 */
-/***/ (function(module, exports) {
-
-	/**
-	 * 彩票页面基本模块
-	 */
-	"use strict";
-
-/***/ }),
-/* 330 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	// 计时器模块
-
-	var Timer = function () {
-	  function Timer() {
-	    _classCallCheck(this, Timer);
-	  }
-
-	  _createClass(Timer, [{
-	    key: 'countdown',
-	    value: function countdown(end, update, handle) {
-	      //end 截止时间，update 时间更新的回调，handle 倒计时结束后执行的回调
-	      var now = new Date().getTime(); //获取当前时间
-	      var self = this; //self 获取当前对象的指针
-	      if (now - end) {
-	        //如果当前时间大于截止时间，说明倒计时已经结束了
-	        handle.call(self); //执行倒计时结束后的回调
-	      } else {
-	        var last_time = end - now; //当前时间离截止时间的剩余时间
-	        var px_d = 1000 * 60 * 60 * 24; //一天的毫秒数
-	        var px_h = 1000 * 60 * 60; //一小时的毫秒数
-	        var px_m = 1000 * 60; //一分钟的毫秒数
-	        var px_s = 1000; //一秒钟的毫秒数
-	        var d = Math.floor(last_time / px_d); //剩余天数
-	        var h = Math.floor((last_time - d * px_d) / px_h); //剩余小时数
-	        var m = Math.floor((last_time - d * px_d - h * px_h) / px_m); //剩余分钟数
-	        var s = Math.floor((last_time - d * px_d - h * px_h * m * px_m) / px_s); //剩余秒数
-	        var r = []; //用数组保存计算结果
-	        if (d > 0) {
-	          r.push('<em>' + d + '</em>\u5929');
-	        }
-	        if (r.length || h > 0) {
-	          r.push('<em>' + h + '</em>\u65F6');
-	        }
-	        if (r.length || m > 0) {
-	          r.push('<em>' + m + '</em>\u5206');
-	        }
-	        if (r.length || s > 0) {
-	          r.push('<em>' + s + '</em>\u79D2');
-	        }
-	        self.last_time = r.join('');
-	        update.call(self, r.join(''));
-	        setTimeout(function () {
-	          //一秒钟轮询一次
-	          self.countdown(end, update, handle);
-	        }, 1000);
-	      }
-	    }
-	  }]);
-
-	  return Timer;
-	}();
-
-	exports.default = Timer;
-
-/***/ }),
-/* 331 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/*计算模块*/
-
-	var Calculate = function () {
-	  function Calculate() {
-	    _classCallCheck(this, Calculate);
-	  }
-
-	  _createClass(Calculate, [{
-	    key: 'computeCount',
-
-	    /**
-	     * 计算注数
-	     * @param active [number] 当前选中的号码
-	     * @param play_name [string] 当前的玩法标识
-	     * @return [number] 注数
-	     */
-	    value: function computeCount(active, play_name) {
-	      var count = 0; //初始注数为0
-	      var exist = this.play_list.has(play_name); //play_list 玩法列表，map 类型，在别处写好，
-	      var arr = new Array(active).fill('0'); //生成长度为 active，每个元素为'0'的数组
-	      if (exist && play_name.at(0) === 'r') {
-	        //玩法存在，并且玩法是组合(玩法名是'r')
-	        count = Calculate.combine(arr, play_name.split('')[1]); //count 进行组合运算得到，combine为class的static方法，在下面定义
-	      }
-	      return count;
-	    }
-
-	    /**
-	     * 组合运算
-	     * @param arr [array] 参与组合运算的数组
-	     * @param size [number] 组合运算的基数
-	     * @return [number] 计算注数
-	     * 比如 arr=[1,2,3,4], size=2，结果就是 6 (4C2,4选2)，排列组合
-	     */
-
-	  }], [{
-	    key: 'combine',
-	    value: function combine(arr, size) {
-	      var allResult = []; //保存最后的结果
-	      (function f(arr, size, result) {
-	        //立即执行函数，做递归，进行组合运算
-	        var arrLen = arr.length;
-	        if (arrLen < size) return; //如果基数大于数组长度，则截止递归运算
-	        if (arrLen === size) {
-	          allResult.push([].concat(result, arr));
-	        } else {
-	          for (var i = 0; i < arrLen; i++) {
-	            var newResult = [].concat(result);
-	            newResult.push(arr[i]);
-	            if (1 === size) {
-	              allResult.push(newResult);
-	            } else {
-	              var newArr = [].concat(arr);
-	              newArr.splice(0, i + 1);
-	              f(newArr, size - 1, newResult);
-	            }
-	          }
-	        }
-	      })(arr, size, []);
-	      return allResult.length;
-	    }
-	  }]);
-
-	  return Calculate;
-	}();
-
-/***/ }),
-/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * 接口模块
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(333);
+	var _jquery = __webpack_require__(330);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -9389,96 +9234,172 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var url = {
-	  getOmit: '/get/omit',
-	  getOpenCode: '/get/opencode',
-	  getState: '/get/state'
-	};
-
-	var Interface = function () {
-	  function Interface() {
-	    _classCallCheck(this, Interface);
+	var Base = function () {
+	  function Base() {
+	    _classCallCheck(this, Base);
 	  }
 
-	  _createClass(Interface, [{
-	    key: 'getOmit',
+	  _createClass(Base, [{
+	    key: 'initPlayList',
 
-	    /*获取遗漏数据，issue [string] 当前期号*/
-	    value: function getOmit(issue) {
-	      var self = this;
-	      return new Promise(function (resolve, reject) {
-	        _jquery2.default.ajax({
-	          url: url.getOmit,
-	          data: {
-	            issue: issue
-	          },
-	          dataType: 'json',
-	          success: function success(res) {
-	            self.setOmit(res.data);
-	            resolve.call(self, res);
-	          },
-	          error: function error(err) {
-	            reject.call(err);
-	          }
-	        });
+	    /**
+	     * 初始化奖金、玩法、说明
+	     */
+	    value: function initPlayList() {
+	      this.play_list //play_list 是 map 结构
+	      .set('r2', {
+	        bonus: 6,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">6</em>元',
+	        name: '任二'
+	      }).set('r3', {
+	        bonus: 19,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">19</em>元',
+	        name: '任四'
+	      }).set('r4', {
+	        bonus: 78,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">78</em>元',
+	        name: '任四'
+	      }).set('r5', {
+	        bonus: 540,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">540</em>元',
+	        name: '任五'
+	      }).set('r6', {
+	        bonus: 90,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">90</em>元',
+	        name: '任六'
+	      }).set('r7', {
+	        bonus: 26,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">26</em>元',
+	        name: '任七'
+	      }).set('r8', {
+	        bonus: 9,
+	        tip: '从01～11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">9</em>元',
+	        name: '任八'
 	      });
 	    }
 
-	    /*获取开奖号码，issue [string] 当前期号*/
+	    /**
+	     * 初始化号码
+	     */
 
 	  }, {
-	    key: 'getOpenCode',
-	    value: function getOpenCode(issue) {
+	    key: 'initNumber',
+	    value: function initNumber() {
+	      for (var i = 1; i < 12; i++) {
+	        this.number.add((i + '').padStart(2, '0')); //number 是 set 类型，因为不允许投注号码重复，padStart 字符串补全两位，用'0'补全
+	      }
+	    }
+
+	    /**
+	     * 设置遗漏数据
+	     * @param omit {map} 传进来的遗漏数据
+	     */
+
+	  }, {
+	    key: 'setOmit',
+	    value: function setOmit(omit) {
+	      /*保存 this 的指向*/
 	      var self = this;
-	      return new Promise(function (resolve, reject) {
-	        _jquery2.default.ajax({
-	          url: url.getOpenCode,
-	          data: {
-	            issue: issue
-	          },
-	          dateType: 'json',
-	          success: function success(res) {
-	            self.setOpenCode(res.data);
-	            resolve.call(self, res);
-	          },
-	          error: function error(err) {
-	            reject.call(err);
+	      /*清空保存的遗漏数据，omit 是一个 map 对象*/
+	      self.omit.clear();
+	      /*设置保存的遗漏值为传进来的遗漏值*/
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = omit.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var _step$value = _slicedToArray(_step.value, 2),
+	              index = _step$value[0],
+	              item = _step$value[1];
+
+	          self.omit.set(index, item);
+	        }
+	        /*使用 jquery 在页面渲染遗漏数据*/
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator.return) {
+	            _iterator.return();
 	          }
-	        });
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+
+	      (0, _jquery2.default)(self.omit_el).each(function (index, item) {
+	        (0, _jquery2.default)(item).text(self.omit.get(index));
 	      });
 	    }
 
-	    /*获取状态, issue [string] 当前期号*/
+	    /**
+	     * 设置开奖
+	     * @param code {set} 传进来的开奖号码，因为开奖号码不能重复，所以用 set 类型
+	     */
 
 	  }, {
-	    key: 'getState',
-	    value: function getState(issue) {
+	    key: 'setOpenCode',
+	    value: function setOpenCode(code) {
 	      var self = this;
-	      return new Promise(function (resolve, reject) {
-	        _jquery2.default.ajax({
-	          url: url.getState,
-	          data: {
-	            issue: issue
-	          },
-	          dataType: 'json',
-	          success: function success(res) {
-	            resolve.call(self, res);
-	          },
-	          error: function error(err) {
-	            reject.call(err);
+	      /*清空保存的开奖号码*/
+	      self.open_code.clear();
+	      /*保存开奖号码*/
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
+
+	      try {
+	        for (var _iterator2 = code.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	          var item = _step2.value;
+
+	          self.open_code.add(item);
+	        }
+	        /*调用更新获奖接口*/
+	      } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	            _iterator2.return();
 	          }
-	        });
-	      });
+	        } finally {
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
+	          }
+	        }
+	      }
+
+	      self.updateOpenCode && self.updateOpenCode.call(self, code);
+	    }
+
+	    /**
+	     * 号码选中取消
+	     * @param e {object} 触发的事件
+	     */
+
+	  }, {
+	    key: 'toggleCodeActive',
+	    value: function toggleCodeActive(e) {
+	      var self = this;
+	      /*获取选中的 jquery 对象*/
+	      var $cur = (0, _jquery2.default)(e.currentTarget);
+	      /*切换样式是否激活*/
+	      $cur.toggleClass('btn-boll-active');
+	      /*计算选中金额*/
+	      self.getCount();
 	    }
 	  }]);
 
-	  return Interface;
+	  return Base;
 	}();
 
-	exports.default = Interface;
-
 /***/ }),
-/* 333 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -19310,6 +19231,319 @@
 		return jQuery;
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(324)(module)))
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	// 计时器模块
+
+	var Timer = function () {
+	  function Timer() {
+	    _classCallCheck(this, Timer);
+	  }
+
+	  _createClass(Timer, [{
+	    key: 'countdown',
+	    value: function countdown(end, update, handle) {
+	      //end 截止时间，update 时间更新的回调，handle 倒计时结束后执行的回调
+	      var now = new Date().getTime(); //获取当前时间
+	      var self = this; //self 获取当前对象的指针
+	      if (now - end) {
+	        //如果当前时间大于截止时间，说明倒计时已经结束了
+	        handle.call(self); //执行倒计时结束后的回调
+	      } else {
+	        var last_time = end - now; //当前时间离截止时间的剩余时间
+	        var px_d = 1000 * 60 * 60 * 24; //一天的毫秒数
+	        var px_h = 1000 * 60 * 60; //一小时的毫秒数
+	        var px_m = 1000 * 60; //一分钟的毫秒数
+	        var px_s = 1000; //一秒钟的毫秒数
+	        var d = Math.floor(last_time / px_d); //剩余天数
+	        var h = Math.floor((last_time - d * px_d) / px_h); //剩余小时数
+	        var m = Math.floor((last_time - d * px_d - h * px_h) / px_m); //剩余分钟数
+	        var s = Math.floor((last_time - d * px_d - h * px_h * m * px_m) / px_s); //剩余秒数
+	        var r = []; //用数组保存计算结果
+	        if (d > 0) {
+	          r.push('<em>' + d + '</em>\u5929');
+	        }
+	        if (r.length || h > 0) {
+	          r.push('<em>' + h + '</em>\u65F6');
+	        }
+	        if (r.length || m > 0) {
+	          r.push('<em>' + m + '</em>\u5206');
+	        }
+	        if (r.length || s > 0) {
+	          r.push('<em>' + s + '</em>\u79D2');
+	        }
+	        self.last_time = r.join('');
+	        update.call(self, r.join(''));
+	        setTimeout(function () {
+	          //一秒钟轮询一次
+	          self.countdown(end, update, handle);
+	        }, 1000);
+	      }
+	    }
+	  }]);
+
+	  return Timer;
+	}();
+
+	exports.default = Timer;
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/*计算模块*/
+
+	var Calculate = function () {
+	  function Calculate() {
+	    _classCallCheck(this, Calculate);
+	  }
+
+	  _createClass(Calculate, [{
+	    key: 'computeCount',
+
+	    /**
+	     * 计算注数
+	     * @param active {number} 当前选中的号码
+	     * @param play_name {string} 当前的玩法标识
+	     * @return {number} 注数
+	     */
+	    value: function computeCount(active, play_name) {
+	      var count = 0; //初始注数为0
+	      var exist = this.play_list.has(play_name); //play_list 玩法列表，set 类型，在别处写好，
+	      var arr = new Array(active).fill('0'); //生成长度为 active，每个元素为'0'的数组
+	      if (exist && play_name.at(0) === 'r') {
+	        //玩法存在，并且玩法是组合(玩法名是'r')
+	        count = Calculate.combine(arr, play_name.split('')[1]); //count 进行组合运算得到，combine为class的static方法，在下面定义
+	      }
+	      return count;
+	    }
+
+	    /**
+	     * 计算奖金范围
+	     * @param active [number] 当前选中的号码
+	     * @param play_name [string] 当前玩法标识
+	     * @return {Array} 奖金范围
+	     */
+
+	  }, {
+	    key: 'computeBonus',
+	    value: function computeBonus(active, play_name) {
+	      var play = play_name.split('');
+	      var self = this;
+	      var arr = new Array(play[1] * 1).fill(0);
+	      var min = void 0,
+	          max = void 0;
+	      if (play[0] === 'r') {
+	        var min_active = 5 - (11 - active);
+	        if (min_active > 0) {
+	          if (min_active - play[1] >= 0) {
+	            arr = new Array(min_active).fill(0);
+	            min = Calculate.combine(arr, play[1]);
+	          } else {
+	            if (play[1] - 5 > 0 && active - play[1] >= 0) {
+	              arr = new Array(active - 5).fill(0);
+	              min = Calculate.combine(arr, play[1] - 5);
+	            } else {
+	              min = active - play[1] > -1 ? 1 : 0;
+	            }
+	          }
+	        } else {
+	          min = active - play[1] > -1 ? 1 : 0;
+	        }
+
+	        var max_active = Math.min(active, 5);
+	        if (play[1] - 5 > 0) {
+	          if (active - play[1] >= 0) {
+	            arr = new Array(active - 5).fill(0);
+	            max = Calculate.combine(arr, play[1] - 5);
+	          } else {
+	            max = 0;
+	          }
+	        } else if (play[1] - 5 < 0) {
+	          arr = new Array(Math.min(active, 5)).fill(0);
+	          max = Calculate.combine(arr, play[1]);
+	        } else {
+	          max = 1;
+	        }
+	      }
+	      return [min, max].map(function (item) {
+	        return item * self.play_list.get(play_name).bonus;
+	      });
+	    }
+
+	    /**
+	     * 组合运算
+	     * @param arr {Array} 参与组合运算的数组
+	     * @param size {Number} 组合运算的基数
+	     * @return {Number} 计算注数
+	     * 比如 arr=[1,2,3,4], size=2，结果就是 6 (4C2,4选2)，排列组合
+	     */
+
+	  }], [{
+	    key: 'combine',
+	    value: function combine(arr, size) {
+	      var allResult = []; //保存最后的结果
+	      (function f(arr, size, result) {
+	        //立即执行函数，做递归，进行组合运算
+	        var arrLen = arr.length;
+	        if (arrLen < size) return; //如果基数大于数组长度，则截止递归运算
+	        if (arrLen === size) {
+	          allResult.push([].concat(result, arr));
+	        } else {
+	          for (var i = 0; i < arrLen; i++) {
+	            var newResult = [].concat(result);
+	            newResult.push(arr[i]);
+	            if (1 === size) {
+	              allResult.push(newResult);
+	            } else {
+	              var newArr = [].concat(arr);
+	              newArr.splice(0, i + 1);
+	              f(newArr, size - 1, newResult);
+	            }
+	          }
+	        }
+	      })(arr, size, []);
+	      return allResult.length;
+	    }
+	  }]);
+
+	  return Calculate;
+	}();
+
+	exports.default = Calculate;
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * 接口模块
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+
+	var _jquery = __webpack_require__(330);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var url = {
+	  getOmit: '/get/omit',
+	  getOpenCode: '/get/opencode',
+	  getState: '/get/state'
+	};
+
+	var Interface = function () {
+	  function Interface() {
+	    _classCallCheck(this, Interface);
+	  }
+
+	  _createClass(Interface, [{
+	    key: 'getOmit',
+
+	    /*获取遗漏数据，issue [string] 当前期号*/
+	    value: function getOmit(issue) {
+	      var self = this;
+	      return new Promise(function (resolve, reject) {
+	        _jquery2.default.ajax({
+	          url: url.getOmit,
+	          data: {
+	            issue: issue
+	          },
+	          dataType: 'json',
+	          success: function success(res) {
+	            self.setOmit(res.data);
+	            resolve.call(self, res);
+	          },
+	          error: function error(err) {
+	            reject.call(err);
+	          }
+	        });
+	      });
+	    }
+
+	    /*获取开奖号码，issue [string] 当前期号*/
+
+	  }, {
+	    key: 'getOpenCode',
+	    value: function getOpenCode(issue) {
+	      var self = this;
+	      return new Promise(function (resolve, reject) {
+	        _jquery2.default.ajax({
+	          url: url.getOpenCode,
+	          data: {
+	            issue: issue
+	          },
+	          dateType: 'json',
+	          success: function success(res) {
+	            self.setOpenCode(res.data);
+	            resolve.call(self, res);
+	          },
+	          error: function error(err) {
+	            reject.call(err);
+	          }
+	        });
+	      });
+	    }
+
+	    /*获取状态, issue [string] 当前期号*/
+
+	  }, {
+	    key: 'getState',
+	    value: function getState(issue) {
+	      var self = this;
+	      return new Promise(function (resolve, reject) {
+	        _jquery2.default.ajax({
+	          url: url.getState,
+	          data: {
+	            issue: issue
+	          },
+	          dataType: 'json',
+	          success: function success(res) {
+	            resolve.call(self, res);
+	          },
+	          error: function error(err) {
+	            reject.call(err);
+	          }
+	        });
+	      });
+	    }
+	  }]);
+
+	  return Interface;
+	}();
+
+	exports.default = Interface;
 
 /***/ })
 /******/ ]);

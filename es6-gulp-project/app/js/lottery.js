@@ -4,5 +4,5 @@
 
 import './lottery/base.js';
 import Timer from './lottery/timer.js';
-import './lottery/calculate.js';
+import Calculate from './lottery/calculate.js';
 import Interface from './lottery/interface.js';
