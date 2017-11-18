@@ -17,8 +17,8 @@
       <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="104" column="1" lean-forward="false" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+            <state relative-caret-position="201">
+              <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
               <folding>
                 <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
@@ -46,8 +46,6 @@
                 <element signature="e#1951#1961#0" expanded="false" />
                 <element signature="e#1998#2037#0" expanded="false" />
                 <element signature="e#2042#2054#0" expanded="false" />
-                <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -311,12 +309,12 @@
       <workItem from="1510764049817" duration="3659000" />
       <workItem from="1510769839470" duration="20000" />
       <workItem from="1510769887174" duration="1456000" />
-      <workItem from="1510789242579" duration="32215000" />
+      <workItem from="1510789242579" duration="33345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39691000" />
+    <option name="totallyTimeSpent" value="40821000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -623,8 +621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="104" column="1" lean-forward="false" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+        <state relative-caret-position="201">
+          <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
           <folding>
             <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
@@ -652,8 +650,6 @@
             <element signature="e#1951#1961#0" expanded="false" />
             <element signature="e#1998#2037#0" expanded="false" />
             <element signature="e#2042#2054#0" expanded="false" />
-            <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
           </folding>
         </state>
       </provider>

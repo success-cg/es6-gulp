@@ -9393,6 +9393,29 @@
 	      /*计算选中金额*/
 	      self.getCount();
 	    }
+
+	    /**
+	     * 切换玩法
+	     * @param e {object} 触发的事件
+	     */
+
+	  }, {
+	    key: 'changePlayNav',
+	    value: function changePlayNav(e) {
+	      var self = this;
+	      /*获取选中的 jquery 对象*/
+	      var $cur = (0, _jquery2.default)(e.currentTarget);
+	      /*当前选中项添加激活样式，其余的项取消激活*/
+	      $cur.addClass('active').siblings().removeClass('active');
+	      /*获取玩法代号，小写，r 标识任选*/
+	      self.cur_play = $cur.attr('desc').toLocaleLowercase();
+	      /*更新 DOM 中的玩法说明*/
+	      (0, _jquery2.default)('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
+	      /*去掉号码选中的样式*/
+	      (0, _jquery2.default)('.boll-list .btn-boll').removeClass('btn-boll-active');
+	      /*计算选中金额*/
+	      self.getCount();
+	    }
 	  }]);
 
 	  return Base;
