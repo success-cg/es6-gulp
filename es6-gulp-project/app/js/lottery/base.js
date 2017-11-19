@@ -120,4 +120,194 @@ class Base {
     /*计算选中金额*/
     self.getCount();
   }
+
+  /**
+   * 操作区，全选、选大、选小、奇数、偶数
+   * @param e {object} 触发的事件
+   */
+  assistHandle(e) {
+    e.preventDefault();
+    let self = this;
+    let $cur = $(e.currentTarget);
+    let index = $cur.index();
+    let $bollList = $('.boll-list .btn-boll');
+    /*操作前先清空选号列表的激活状态*/
+    $bollList.removeClass('btn-boll-active');
+    /*全选，激活全部*/
+    if (index === 0) {
+      $bollList.addClass('btn-boll-active');
+    }
+    /*选大，激活大于5的*/
+    if (index === 1) {
+      $bollList.each((index, item) => {
+        if (item.textContent - 5 > 0) {
+          $(item).addClass('btn-boll-active');
+        }
+      });
+    }
+    /*选小，激活小于6的*/
+    if (index === 2) {
+      $bollList.each((index, item) => {
+        if (item.textContent - 6 < 0) {
+          $(item).addClass('btn-boll-active');
+        }
+      });
+    }
+    /*奇数，激活奇数*/
+    if (index === 3) {
+      $bollList.each((index, item) => {
+        if (item.textContent % 2 === 1) {
+          $(item).addClass('btn-boll-active');
+        }
+      });
+    }
+    /*偶数，激活偶数*/
+    if (index === 4) {
+      $bollList.each((index, item) => {
+        if (item.textContent % 2 === 0) {
+          $(item).addClass('btn-boll-active');
+        }
+      });
+    }
+    /*计算选中金额*/
+    self.getCount();
+  }
+
+  /**
+   * 获取当前彩票名称
+   * @return {*}
+   */
+  getName() {
+    return this.name;
+  }
+
+  /**
+   * 添加号码
+   */
+  addCode() {
+    let self = this;
+    let $active = $('.boll-list .btn-boll-active').text().match(/\d(2)/g);
+    let active = $active ? $active.length : 0;
+    let count = self.computeCount(active, self.cur_play);
+    if (count) {
+      self.addCodeItem($active.join(''), self.cur_play, self.play_list.get(self.cur_play).name, count);
+    }
+  }
+
+  /**
+   * 添加单次号码
+   * @param code {string} 添加的号码
+   * @param type {string} 类型
+   * @param typeName {string} 类型名称
+   * @param count {number} 注数
+   */
+  addCodeItem(code, type, typeName, count) {
+    let self = this;
+    /*模板字符串购物车选中号码的列表显示*/
+    const tpl = `
+      <li codes="${type}|${code}" bonus="${count * 2}" count="${count}">
+        <div class="code">
+          <b>${typeName}${count > 1 ? '复式' : '单式'}</b>
+          <b class="em">${code}</b>
+          [${count}注，<em class="code-list-money">${count * 2}</em>元]
+        </div>
+      </li>
+    `;
+    /*渲染购物车号码的字符串模板*/
+    $(self.cart_el).append(tpl);
+    self.getTotal();
+  }
+
+  /**
+   * 计算选中金额
+   */
+  getCount() {
+    let self = this;
+    let active = $('.boll-list .btn-boll-active').length;
+    /*计算注数*/
+    let count = self.computeCount(active, self.cur_play);
+    /*计算奖金范围*/
+    let range = self.computeBonus(active, self.cur_play);
+    /*计算花的钱数*/
+    let money = count * 2;
+    /*计算盈利金钱范围*/
+    let win1 = range[0] - money;
+    /*最小盈利金钱*/
+    let win2 = range[1] - money;
+    /*最大盈利金钱*/
+    let tpl;
+    /*保存亏损的钱*/
+    let c1 = (win1 < 0 && win2 < 0) ? Math.abs(win1) : win1;
+    let c2 = (win1 < 0 && win2 < 0) ? Math.abs(win2) : win2;
+    /*如果注数为0*/
+    if (count === 0) {
+      tpl = `您选了 <b>${count}</b> 注，共 <b>${count * 2}</b> 元`;
+      /*如果奖金的范围上下限一样*/
+    } else if (range[0] === range[1]) {
+      tpl = `您选了 <b>${count}</b> 注，共 <b>${count * 2}</b> 元 <em>若中奖，奖金：
+            <strong class="red">${range[0]}</strong>元，
+            您将${win1 >= 0 ? '盈利' : '亏损'}
+            <strong class="${win1 >= 0 ? 'red' : 'green'}">${Math.abs(win1)}</strong>元</em>`;
+      /*如果奖金的范围上下限不一样*/
+    } else {
+      tpl = `您选了 <b>${count}</b> 注，共 <b>${count * 2}</b> 元 <em>若中奖，奖金：
+            <strong class="red">${range[0]}</strong> 至 <strong class="red">${range[1]}</strong> 元，
+            您将${win1 < 0 && win2 < 0 ? '亏损' : '盈利'}
+            <strong class="${win > 0 ? 'red' : 'green'}">${c1}</strong> 
+            至 <strong class="${win2 > 0 ? 'red' : 'green'}">${c2}</strong> 元</em>`;
+    }
+    /*字符串模板渲染到页面上*/
+    $('.self_info').html(tpl);
+  }
+
+  /**
+   * 计算所有金额
+   */
+  getTotal() {
+    let count = 0;
+    $('.codelist li').each((index, item) => {
+      count += $(item).attr(count) * 1;
+    });
+    $('#count').text(count);
+    $('#money').text(count * 2);
+  }
+
+  /**
+   * 生成随机数号码
+   * @param num {number} 随机号码的个数
+   * @return {string} 随机号码
+   */
+  getRandom(num) {
+    let arr = [], index;
+    let number = Array.from(this.number);
+    while (num--) {
+      index = Number.parseInt(Math.random() * number.length);
+      arr.push(number[index]);
+      number.splice(index, 1);
+    }
+    return arr.join(' ');
+  }
+
+  /**
+   * 添加随机号码
+   * @param e {object} 事件对象
+   */
+  getRandomCode(e) {
+    /*组织默认事件*/
+    e.preventDefault();
+    let self = this;
+    /*获取当前要随机生成的数量*/
+    let num = e.currentTarget.getAttribute('count');
+    /*获取当前玩法*/
+    let play = self.cur_play.match(/\d+/g)[0] * 1;
+    if (num === '0') {  /*如果是清空购物车*/
+      $(self.cart_el).html('');
+    } else {  /*否则就是机选1、5、10注*/
+      for (let i = 0; i < num; i++) {
+        self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);
+      }
+    }
+  }
 }
+
+export default Base;

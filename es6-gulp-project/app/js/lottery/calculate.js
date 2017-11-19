@@ -94,6 +94,8 @@ class Calculate {
     })(arr, size, []);
     return allResult.length;
   }
+
+  
 }
 
 export default Calculate;

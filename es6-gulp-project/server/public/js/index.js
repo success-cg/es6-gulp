@@ -9222,6 +9222,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -9416,10 +9420,212 @@
 	      /*计算选中金额*/
 	      self.getCount();
 	    }
+
+	    /**
+	     * 操作区，全选、选大、选小、奇数、偶数
+	     * @param e {object} 触发的事件
+	     */
+
+	  }, {
+	    key: 'assistHandle',
+	    value: function assistHandle(e) {
+	      e.preventDefault();
+	      var self = this;
+	      var $cur = (0, _jquery2.default)(e.currentTarget);
+	      var index = $cur.index();
+	      var $bollList = (0, _jquery2.default)('.boll-list .btn-boll');
+	      /*操作前先清空选号列表的激活状态*/
+	      $bollList.removeClass('btn-boll-active');
+	      /*全选，激活全部*/
+	      if (index === 0) {
+	        $bollList.addClass('btn-boll-active');
+	      }
+	      /*选大，激活大于5的*/
+	      if (index === 1) {
+	        $bollList.each(function (index, item) {
+	          if (item.textContent - 5 > 0) {
+	            (0, _jquery2.default)(item).addClass('btn-boll-active');
+	          }
+	        });
+	      }
+	      /*选小，激活小于6的*/
+	      if (index === 2) {
+	        $bollList.each(function (index, item) {
+	          if (item.textContent - 6 < 0) {
+	            (0, _jquery2.default)(item).addClass('btn-boll-active');
+	          }
+	        });
+	      }
+	      /*奇数，激活奇数*/
+	      if (index === 3) {
+	        $bollList.each(function (index, item) {
+	          if (item.textContent % 2 === 1) {
+	            (0, _jquery2.default)(item).addClass('btn-boll-active');
+	          }
+	        });
+	      }
+	      /*偶数，激活偶数*/
+	      if (index === 4) {
+	        $bollList.each(function (index, item) {
+	          if (item.textContent % 2 === 0) {
+	            (0, _jquery2.default)(item).addClass('btn-boll-active');
+	          }
+	        });
+	      }
+	      /*计算选中金额*/
+	      self.getCount();
+	    }
+
+	    /**
+	     * 获取当前彩票名称
+	     * @return {*}
+	     */
+
+	  }, {
+	    key: 'getName',
+	    value: function getName() {
+	      return this.name;
+	    }
+
+	    /**
+	     * 添加号码
+	     */
+
+	  }, {
+	    key: 'addCode',
+	    value: function addCode() {
+	      var self = this;
+	      var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d(2)/g);
+	      var active = $active ? $active.length : 0;
+	      var count = self.computeCount(active, self.cur_play);
+	      if (count) {
+	        self.addCodeItem($active.join(''), self.cur_play, self.play_list.get(self.cur_play).name, count);
+	      }
+	    }
+
+	    /**
+	     * 添加单次号码
+	     * @param code {string} 添加的号码
+	     * @param type {string} 类型
+	     * @param typeName {string} 类型名称
+	     * @param count {number} 注数
+	     */
+
+	  }, {
+	    key: 'addCodeItem',
+	    value: function addCodeItem(code, type, typeName, count) {
+	      var self = this;
+	      /*模板字符串购物车选中号码的列表显示*/
+	      var tpl = '\n      <li codes="' + type + '|' + code + '" bonus="' + count * 2 + '" count="' + count + '">\n        <div class="code">\n          <b>' + typeName + (count > 1 ? '复式' : '单式') + '</b>\n          <b class="em">' + code + '</b>\n          [' + count + '\u6CE8\uFF0C<em class="code-list-money">' + count * 2 + '</em>\u5143]\n        </div>\n      </li>\n    ';
+	      /*渲染购物车号码的字符串模板*/
+	      (0, _jquery2.default)(self.cart_el).append(tpl);
+	      self.getTotal();
+	    }
+
+	    /**
+	     * 计算选中金额
+	     */
+
+	  }, {
+	    key: 'getCount',
+	    value: function getCount() {
+	      var self = this;
+	      var active = (0, _jquery2.default)('.boll-list .btn-boll-active').length;
+	      /*计算注数*/
+	      var count = self.computeCount(active, self.cur_play);
+	      /*计算奖金范围*/
+	      var range = self.computeBonus(active, self.cur_play);
+	      /*计算花的钱数*/
+	      var money = count * 2;
+	      /*计算盈利金钱范围*/
+	      var win1 = range[0] - money;
+	      /*最小盈利金钱*/
+	      var win2 = range[1] - money;
+	      /*最大盈利金钱*/
+	      var tpl = void 0;
+	      /*保存亏损的钱*/
+	      var c1 = win1 < 0 && win2 < 0 ? Math.abs(win1) : win1;
+	      var c2 = win1 < 0 && win2 < 0 ? Math.abs(win2) : win2;
+	      /*如果注数为0*/
+	      if (count === 0) {
+	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143';
+	        /*如果奖金的范围上下限一样*/
+	      } else if (range[0] === range[1]) {
+	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143 <em>\u82E5\u4E2D\u5956\uFF0C\u5956\u91D1\uFF1A\n            <strong class="red">' + range[0] + '</strong>\u5143\uFF0C\n            \u60A8\u5C06' + (win1 >= 0 ? '盈利' : '亏损') + '\n            <strong class="' + (win1 >= 0 ? 'red' : 'green') + '">' + Math.abs(win1) + '</strong>\u5143</em>';
+	        /*如果奖金的范围上下限不一样*/
+	      } else {
+	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143 <em>\u82E5\u4E2D\u5956\uFF0C\u5956\u91D1\uFF1A\n            <strong class="red">' + range[0] + '</strong> \u81F3 <strong class="red">' + range[1] + '</strong> \u5143\uFF0C\n            \u60A8\u5C06' + (win1 < 0 && win2 < 0 ? '亏损' : '盈利') + '\n            <strong class="' + (win > 0 ? 'red' : 'green') + '">' + c1 + '</strong> \n            \u81F3 <strong class="' + (win2 > 0 ? 'red' : 'green') + '">' + c2 + '</strong> \u5143</em>';
+	      }
+	      /*字符串模板渲染到页面上*/
+	      (0, _jquery2.default)('.self_info').html(tpl);
+	    }
+
+	    /**
+	     * 计算所有金额
+	     */
+
+	  }, {
+	    key: 'getTotal',
+	    value: function getTotal() {
+	      var count = 0;
+	      (0, _jquery2.default)('.codelist li').each(function (index, item) {
+	        count += (0, _jquery2.default)(item).attr(count) * 1;
+	      });
+	      (0, _jquery2.default)('#count').text(count);
+	      (0, _jquery2.default)('#money').text(count * 2);
+	    }
+
+	    /**
+	     * 生成随机数号码
+	     * @param num {number} 随机号码的个数
+	     * @return {string} 随机号码
+	     */
+
+	  }, {
+	    key: 'getRandom',
+	    value: function getRandom(num) {
+	      var arr = [],
+	          index = void 0;
+	      var number = Array.from(this.number);
+	      while (num--) {
+	        index = Number.parseInt(Math.random() * number.length);
+	        arr.push(number[index]);
+	        number.splice(index, 1);
+	      }
+	      return arr.join(' ');
+	    }
+
+	    /**
+	     * 添加随机号码
+	     * @param e {object} 事件对象
+	     */
+
+	  }, {
+	    key: 'getRandomCode',
+	    value: function getRandomCode(e) {
+	      /*组织默认事件*/
+	      e.preventDefault();
+	      var self = this;
+	      /*获取当前要随机生成的数量*/
+	      var num = e.currentTarget.getAttribute('count');
+	      /*获取当前玩法*/
+	      var play = self.cur_play.match(/\d+/g)[0] * 1;
+	      if (num === '0') {
+	        /*如果是清空购物车*/
+	        (0, _jquery2.default)(self.cart_el).html('');
+	      } else {
+	        /*否则就是机选1、5、10注*/
+	        for (var i = 0; i < num; i++) {
+	          self.addCodeItem(self.getRandom(play), self.cur_play, self.play_list.get(self.cur_play).name, 1);
+	        }
+	      }
+	    }
 	  }]);
 
 	  return Base;
 	}();
+
+	exports.default = Base;
 
 /***/ }),
 /* 330 */

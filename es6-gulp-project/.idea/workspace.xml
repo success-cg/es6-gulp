@@ -17,35 +17,44 @@
       <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+            <state relative-caret-position="460">
+              <caret line="294" column="10" lean-forward="true" selection-start-line="294" selection-start-column="10" selection-end-line="294" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
-                <element signature="e#146#272#0" expanded="false" />
-                <element signature="e#293#421#0" expanded="false" />
-                <element signature="e#442#570#0" expanded="false" />
-                <element signature="e#591#721#0" expanded="false" />
-                <element signature="e#742#870#0" expanded="false" />
-                <element signature="e#891#1019#0" expanded="false" />
-                <element signature="e#1040#1166#0" expanded="false" />
                 <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
-                <element signature="e#1247#1358#0" expanded="false" />
                 <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
-                <element signature="e#1442#1457#0" expanded="false" />
-                <element signature="e#1483#1512#0" expanded="false" />
-                <element signature="e#1540#1560#0" expanded="false" />
-                <element signature="e#1607#1648#0" expanded="false" />
-                <element signature="e#1653#1676#0" expanded="false" />
-                <element signature="e#1725#1774#0" expanded="false" />
                 <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
-                <element signature="e#1905#1918#0" expanded="false" />
-                <element signature="e#1951#1961#0" expanded="false" />
-                <element signature="e#1998#2037#0" expanded="false" />
-                <element signature="e#2042#2054#0" expanded="false" />
+                <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#changePlayNav#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#changePlayNav#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#assistHandle#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#assistHandle#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#getName#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#getName#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#addCode#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#addCode#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#getCount#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#getTotal#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#getTotal#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#getRandom#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#getRandom#0;n#Base#0" expanded="false" />
+                <element signature="n#!!doc;n#getRandomCode#0;n#Base#0" expanded="false" />
+                <element signature="n#!!block;n#getRandomCode#0;n#Base#0" expanded="false" />
+                <marker date="1511067322896" expanded="true" signature="4920:5134" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="4947:4962" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="4947:5051" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="4947:5122" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="6015:6210" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="6313:6626" ph="..." />
+                <marker date="1511067322896" expanded="true" signature="7799:7822" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,6 +77,8 @@
       <find>plays</find>
       <find>玩法提示</find>
       <find>values</find>
+      <find>play_list</find>
+      <find>getCount</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -134,7 +145,25 @@
             <id />
           </State>
           <State>
+            <id>Assignment issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
             <id>CSS</id>
+          </State>
+          <State>
+            <id>Code quality toolsCSS</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesCSS</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
           </State>
           <State>
             <id>CoffeeScript</id>
@@ -143,28 +172,64 @@
             <id>Control flow issuesJavaScript</id>
           </State>
           <State>
-            <id>Cucumber</id>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
           </State>
           <State>
             <id>Error handlingJavaScript</id>
           </State>
           <State>
-            <id>GeneralCoffeeScript</id>
+            <id>Flow type checkerJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
           </State>
           <State>
             <id>GeneralJavaScript</id>
           </State>
           <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
             <id>JavaScript</id>
           </State>
           <State>
-            <id>RELAX NG</id>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsCoffeeScript</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>RegExp</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
           </State>
           <State>
             <id>XML</id>
           </State>
           <State>
-            <id>XSLT</id>
+            <id>XPath</id>
           </State>
         </expanded-state>
       </profile-state>
@@ -270,7 +335,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SearchEverywhereHistoryKey" value="getCount&#9;ACTION&#9;null&#10;reformat&#9;ACTION&#9;ReformatCode" />
@@ -293,7 +358,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -309,12 +374,12 @@
       <workItem from="1510764049817" duration="3659000" />
       <workItem from="1510769839470" duration="20000" />
       <workItem from="1510769887174" duration="1456000" />
-      <workItem from="1510789242579" duration="33345000" />
+      <workItem from="1510789242579" duration="47004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40821000" />
+    <option name="totallyTimeSpent" value="54480000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -348,7 +413,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -587,26 +652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="93" column="61" lean-forward="true" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="568">
           <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/calculate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="86" column="18" lean-forward="true" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -619,37 +668,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="95" column="55" lean-forward="true" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/calculate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!doc;n#computeCount#0;n#Calculate#0" expanded="false" />
+            <element signature="n#!!block;n#computeCount#0;n#Calculate#0" expanded="false" />
+            <element signature="e#406#546#0" expanded="false" />
+            <element signature="e#880#1865#0" expanded="false" />
+            <element signature="e#950#1365#0" expanded="false" />
+            <element signature="e#991#1098#0" expanded="false" />
+            <element signature="e#1104#1357#0" expanded="false" />
+            <element signature="e#1162#1279#0" expanded="false" />
+            <element signature="e#1285#1347#0" expanded="false" />
+            <element signature="e#1371#1425#0" expanded="false" />
+            <element signature="e#1498#1690#0" expanded="false" />
+            <element signature="e#1535#1646#0" expanded="false" />
+            <element signature="e#1652#1682#0" expanded="false" />
+            <element signature="e#1717#1827#0" expanded="false" />
+            <element signature="e#1833#1859#0" expanded="false" />
+            <element signature="n#!!doc;n#combine#0;n#Calculate#0" expanded="false" />
+            <element signature="n#!!block;n#combine#0;n#Calculate#0" expanded="false" />
+            <element signature="e#2219#2784#0" expanded="false" />
+            <element signature="e#2354#2411#0" expanded="false" />
+            <element signature="e#2417#2778#0" expanded="false" />
+            <element signature="e#2460#2770#0" expanded="false" />
+            <element signature="e#2567#2619#0" expanded="false" />
+            <element signature="e#2625#2760#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+        <state relative-caret-position="460">
+          <caret line="294" column="10" lean-forward="true" selection-start-line="294" selection-start-column="10" selection-end-line="294" selection-end-column="10" />
           <folding>
             <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
-            <element signature="e#146#272#0" expanded="false" />
-            <element signature="e#293#421#0" expanded="false" />
-            <element signature="e#442#570#0" expanded="false" />
-            <element signature="e#591#721#0" expanded="false" />
-            <element signature="e#742#870#0" expanded="false" />
-            <element signature="e#891#1019#0" expanded="false" />
-            <element signature="e#1040#1166#0" expanded="false" />
             <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
-            <element signature="e#1247#1358#0" expanded="false" />
             <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
-            <element signature="e#1442#1457#0" expanded="false" />
-            <element signature="e#1483#1512#0" expanded="false" />
-            <element signature="e#1540#1560#0" expanded="false" />
-            <element signature="e#1607#1648#0" expanded="false" />
-            <element signature="e#1653#1676#0" expanded="false" />
-            <element signature="e#1725#1774#0" expanded="false" />
             <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
-            <element signature="e#1905#1918#0" expanded="false" />
-            <element signature="e#1951#1961#0" expanded="false" />
-            <element signature="e#1998#2037#0" expanded="false" />
-            <element signature="e#2042#2054#0" expanded="false" />
+            <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#toggleCodeActive#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#changePlayNav#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#changePlayNav#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#assistHandle#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#assistHandle#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#getName#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#getName#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#addCode#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#addCode#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#getCount#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#getTotal#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#getTotal#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#getRandom#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#getRandom#0;n#Base#0" expanded="false" />
+            <element signature="n#!!doc;n#getRandomCode#0;n#Base#0" expanded="false" />
+            <element signature="n#!!block;n#getRandomCode#0;n#Base#0" expanded="false" />
+            <marker date="1511067322896" expanded="true" signature="4920:5134" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="4947:4962" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="4947:5051" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="4947:5122" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="6015:6210" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="6313:6626" ph="..." />
+            <marker date="1511067322896" expanded="true" signature="7799:7822" ph="..." />
           </folding>
         </state>
       </provider>
