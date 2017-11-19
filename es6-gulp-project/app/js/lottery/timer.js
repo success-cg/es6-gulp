@@ -10,7 +10,7 @@ class Timer {
   countdown(end, update, handle) {
     const now = new Date().getTime(); //获取当前时间
     const self = this; //self 获取当前对象的指针
-    if (now - end) {  //如果当前时间大于截止时间，说明倒计时已经结束了
+    if (now - end > 0) {  //如果当前时间大于截止时间，说明倒计时已经结束了
       handle.call(self); //执行倒计时结束后的回调
     } else {
       let last_time = end - now;  //当前时间离截止时间的剩余时间
@@ -21,7 +21,7 @@ class Timer {
       let d = Math.floor(last_time / px_d); //剩余天数
       let h = Math.floor((last_time - d * px_d) / px_h);  //剩余小时数
       let m = Math.floor((last_time - d * px_d - h * px_h) / px_m); //剩余分钟数
-      let s = Math.floor((last_time - d * px_d - h * px_h * m * px_m) / px_s);  //剩余秒数
+      let s = Math.floor((last_time - d * px_d - h * px_h - m * px_m) / px_s);  //剩余秒数
       let r = [];  //用数组保存计算结果
       if (d > 0) {
         r.push(`<em>${d}</em>天`);

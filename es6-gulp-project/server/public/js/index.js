@@ -63,6 +63,49 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// ES6 兼容插件
+	var syy = new _lottery2.default();
+
+	// 引入彩票业务
+
+
+	console.log('syy', syy);
+
+	// import './class/lesson1 let const.js';
+	// import './class/lesson2 解构赋值.js';
+	// import './class/lesson3 正则扩展.js';
+	// import './class/lesson4 字符串扩展.js';
+	// import './class/lesson6 数组扩展.js';
+	// import './class/lesson7 函数扩展.js';
+	// import './class/lesson10 set-map数据结构.js';
+	// import './class/lesson11 Proxy和Reflect.js';
+	// import './class/lesson12 class类.js';
+	// import './class/lesson13 Promise.js';
+	// import './class/lesson14 Iterator.js';
+	// import './class/lesson15 Generator.js';
+	// import './class/lesson16 Decorator.js';
+
+	// import {name, test, Person} from './class/lesson17 模块化.js';
+	// // 具名导入，需要用对象的解构赋值
+	// console.log({
+	//   name,
+	//   test,
+	//   Person
+	// });   // {name: "cg", test: ƒ, Person: ƒ}
+	//
+	// import * as me from './class/lesson17 模块化.js';
+	// // 具名的全部倒入, * 表示全部导入，as 是关键字，表示起别名，这里别名为 me
+	//
+	// console.log('me', me, {
+	//   name: me.name,
+	//   test: me.test,
+	//   Person: me.Person
+	// });  // {name: "cg", test: ƒ, Person: ƒ}
+	//
+	// import xxx from './class/lesson17 模块化.js';
+	// // 匿名的全部倒入，可以自己给模块起名，推荐！！！
+	// console.log('default', xxx);
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9360,7 +9403,7 @@
 	    _this.issue_el = '#curr_issue';
 	    _this.countdown_el = '#countdown';
 	    _this.state_el = '.state_el';
-	    _this.cartList = '.code-list';
+	    _this.cart_el = '.codelist';
 	    _this.omit_el = '';
 	    _this.cur_play = 'r5';
 	    _this.initPlayList();
@@ -9419,7 +9462,7 @@
 	      /*操作区，大小奇偶操作*/
 	      (0, _jquery2.default)('.dxjo').on('click', 'li', self.assistHandle.bind(self));
 	      /*机选号码，机选1注、5注、10注*/
-	      (0, _jquery2.default)('qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
+	      (0, _jquery2.default)('.qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
 	    }
 	  }]);
 
@@ -9440,7 +9483,8 @@
 
 	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // import 'babel-polyfill';
+
 
 	var _jquery = __webpack_require__(330);
 
@@ -9561,6 +9605,7 @@
 	  }, {
 	    key: 'setOpenCode',
 	    value: function setOpenCode(code) {
+	      console.log('code', code);
 	      var self = this;
 	      /*清空保存的开奖号码*/
 	      self.open_code.clear();
@@ -9625,7 +9670,7 @@
 	      /*当前选中项添加激活样式，其余的项取消激活*/
 	      $cur.addClass('active').siblings().removeClass('active');
 	      /*获取玩法代号，小写，r 标识任选*/
-	      self.cur_play = $cur.attr('desc').toLocaleLowercase();
+	      self.cur_play = $cur.attr('desc').toLocaleLowerCase();
 	      /*更新 DOM 中的玩法说明*/
 	      (0, _jquery2.default)('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
 	      /*去掉号码选中的样式*/
@@ -9708,11 +9753,15 @@
 	    key: 'addCode',
 	    value: function addCode() {
 	      var self = this;
-	      var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d(2)/g);
+	      var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d{2}/g);
 	      var active = $active ? $active.length : 0;
+	      console.log('active', active);
+	      console.log('self.cur_play', self.cur_play);
 	      var count = self.computeCount(active, self.cur_play);
+	      console.log('count', count);
+
 	      if (count) {
-	        self.addCodeItem($active.join(''), self.cur_play, self.play_list.get(self.cur_play).name, count);
+	        self.addCodeItem($active.join(' '), self.cur_play, self.play_list.get(self.cur_play).name, count);
 	      }
 	    }
 
@@ -9731,6 +9780,7 @@
 	      /*模板字符串购物车选中号码的列表显示*/
 	      var tpl = '\n      <li codes="' + type + '|' + code + '" bonus="' + count * 2 + '" count="' + count + '">\n        <div class="code">\n          <b>' + typeName + (count > 1 ? '复式' : '单式') + '</b>\n          <b class="em">' + code + '</b>\n          [' + count + '\u6CE8\uFF0C<em class="code-list-money">' + count * 2 + '</em>\u5143]\n        </div>\n      </li>\n    ';
 	      /*渲染购物车号码的字符串模板*/
+	      console.log(tpl);
 	      (0, _jquery2.default)(self.cart_el).append(tpl);
 	      self.getTotal();
 	    }
@@ -9767,10 +9817,10 @@
 	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143 <em>\u82E5\u4E2D\u5956\uFF0C\u5956\u91D1\uFF1A\n            <strong class="red">' + range[0] + '</strong>\u5143\uFF0C\n            \u60A8\u5C06' + (win1 >= 0 ? '盈利' : '亏损') + '\n            <strong class="' + (win1 >= 0 ? 'red' : 'green') + '">' + Math.abs(win1) + '</strong>\u5143</em>';
 	        /*如果奖金的范围上下限不一样*/
 	      } else {
-	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143 <em>\u82E5\u4E2D\u5956\uFF0C\u5956\u91D1\uFF1A\n            <strong class="red">' + range[0] + '</strong> \u81F3 <strong class="red">' + range[1] + '</strong> \u5143\uFF0C\n            \u60A8\u5C06' + (win1 < 0 && win2 < 0 ? '亏损' : '盈利') + '\n            <strong class="' + (win > 0 ? 'red' : 'green') + '">' + c1 + '</strong> \n            \u81F3 <strong class="' + (win2 > 0 ? 'red' : 'green') + '">' + c2 + '</strong> \u5143</em>';
+	        tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8\uFF0C\u5171 <b>' + count * 2 + '</b> \u5143 <em>\u82E5\u4E2D\u5956\uFF0C\u5956\u91D1\uFF1A\n            <strong class="red">' + range[0] + '</strong> \u81F3 <strong class="red">' + range[1] + '</strong> \u5143\uFF0C\n            \u60A8\u5C06' + (win1 < 0 && win2 < 0 ? '亏损' : '盈利') + '\n            <strong class="' + (win1 >= 0 ? 'red' : 'green') + '">' + c1 + '</strong> \n            \u81F3 <strong class="' + (win2 >= 0 ? 'red' : 'green') + '">' + c2 + '</strong> \u5143</em>';
 	      }
 	      /*字符串模板渲染到页面上*/
-	      (0, _jquery2.default)('.self_info').html(tpl);
+	      (0, _jquery2.default)('.sel_info').html(tpl);
 	    }
 
 	    /**
@@ -9782,7 +9832,7 @@
 	    value: function getTotal() {
 	      var count = 0;
 	      (0, _jquery2.default)('.codelist li').each(function (index, item) {
-	        count += (0, _jquery2.default)(item).attr(count) * 1;
+	        count += (0, _jquery2.default)(item).attr('count') * 1;
 	      });
 	      (0, _jquery2.default)('#count').text(count);
 	      (0, _jquery2.default)('#money').text(count * 2);
@@ -19708,7 +19758,7 @@
 	    value: function countdown(end, update, handle) {
 	      var now = new Date().getTime(); //获取当前时间
 	      var self = this; //self 获取当前对象的指针
-	      if (now - end) {
+	      if (now - end > 0) {
 	        //如果当前时间大于截止时间，说明倒计时已经结束了
 	        handle.call(self); //执行倒计时结束后的回调
 	      } else {
@@ -19720,7 +19770,7 @@
 	        var d = Math.floor(last_time / px_d); //剩余天数
 	        var h = Math.floor((last_time - d * px_d) / px_h); //剩余小时数
 	        var m = Math.floor((last_time - d * px_d - h * px_h) / px_m); //剩余分钟数
-	        var s = Math.floor((last_time - d * px_d - h * px_h * m * px_m) / px_s); //剩余秒数
+	        var s = Math.floor((last_time - d * px_d - h * px_h - m * px_m) / px_s); //剩余秒数
 	        var r = []; //用数组保存计算结果
 	        if (d > 0) {
 	          r.push('<em>' + d + '</em>\u5929');
@@ -19781,12 +19831,18 @@
 	     */
 	    value: function computeCount(active, play_name) {
 	      var count = 0; //初始注数为0
+	      console.log('play_name', play_name);
 	      var exist = this.play_list.has(play_name); //play_list 玩法列表，set 类型，在别处写好，
+	      console.log('play_list', this.play_list);
+	      console.log('exist', exist);
 	      var arr = new Array(active).fill('0'); //生成长度为 active，每个元素为'0'的数组
+	      console.log('play_name', play_name);
 	      if (exist && play_name.at(0) === 'r') {
 	        //玩法存在，并且玩法是组合(玩法名是'r')
+	        console.log('xxxxxxx');
 	        count = Calculate.combine(arr, play_name.split('')[1]); //count 进行组合运算得到，combine为class的static方法，在下面定义
 	      }
+	      console.log('count', count);
 	      return count;
 	    }
 

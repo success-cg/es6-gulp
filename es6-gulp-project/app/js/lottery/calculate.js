@@ -9,11 +9,17 @@ class Calculate {
    */
   computeCount(active, play_name) {
     let count = 0; //初始注数为0
+    console.log('play_name', play_name);
     const exist = this.play_list.has(play_name); //play_list 玩法列表，set 类型，在别处写好，
+    console.log('play_list', this.play_list);
+    console.log('exist', exist);
     let arr = new Array(active).fill('0'); //生成长度为 active，每个元素为'0'的数组
+    console.log('play_name', play_name);
     if (exist && play_name.at(0) === 'r') {  //玩法存在，并且玩法是组合(玩法名是'r')
+      console.log('xxxxxxx');
       count = Calculate.combine(arr, play_name.split('')[1]); //count 进行组合运算得到，combine为class的static方法，在下面定义
     }
+    console.log('count', count);
     return count;
   }
 
@@ -73,7 +79,7 @@ class Calculate {
    */
   static combine(arr, size) {
     let allResult = []; //保存最后的结果
-    (function f (arr, size, result) {  //立即执行函数，做递归，进行组合运算
+    (function f(arr, size, result) {  //立即执行函数，做递归，进行组合运算
       let arrLen = arr.length;
       if (arrLen < size) return; //如果基数大于数组长度，则截止递归运算
       if (arrLen === size) {
@@ -95,7 +101,7 @@ class Calculate {
     return allResult.length;
   }
 
-  
+
 }
 
 export default Calculate;

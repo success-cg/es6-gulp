@@ -71,7 +71,7 @@ class Lottery extends mix(Base, Calculate, Interface, Timer) {
     this.issue_el = '#curr_issue';
     this.countdown_el = '#countdown';
     this.state_el = '.state_el';
-    this.cartList = '.code-list';
+    this.cart_el = '.codelist';
     this.omit_el = '';
     this.cur_play = 'r5';
     this.initPlayList();
@@ -122,7 +122,7 @@ class Lottery extends mix(Base, Calculate, Interface, Timer) {
     /*操作区，大小奇偶操作*/
     $('.dxjo').on('click', 'li', self.assistHandle.bind(self));
     /*机选号码，机选1注、5注、10注*/
-    $('qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
+    $('.qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
   }
 }
 

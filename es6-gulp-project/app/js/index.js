@@ -4,6 +4,9 @@ import babel from 'babel-polyfill';
 // 引入彩票业务
 import Lottery from './lottery.js';
 
+const syy = new Lottery();
+
+console.log('syy',syy);
 
 // import './class/lesson1 let const.js';
 // import './class/lesson2 解构赋值.js';

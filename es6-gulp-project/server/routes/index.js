@@ -30,11 +30,11 @@ var makeIssue = function () {
     var h = Math.ceil(minus_time / 1000 / 60 / 10);
     var end_date = new Date(cur_issue_date.getTime() + 1000 * 60 * 10 * h);
     end_time = end_date.getTime();
-    cur_issue = [end_date.getFullYear(), ('0' + end_date.getMonth() + 1).slice(-2), ('0' + end_date.getDate()).slice(-2), ('0' + h).slice(-2)].join('');
+    cur_issue = [end_date.getFullYear(), ('0' + (end_date.getMonth() + 1)).slice(-2), ('0' + end_date.getDate()).slice(-2), ('0' + h).slice(-2)].join('');
   } else {
     /*今天销售已截止*/
     end_time = first_issue_date.getTime();
-    cur_issue = [first_issue_date.getFullYear(), ('0' + first_issue_date.getMonth() + 1).slice(-2), ('0' + first_issue_date.getDate()).slice(-2), '01'].join('');
+    cur_issue = [first_issue_date.getFullYear(), ('0' + (first_issue_date.getMonth() + 1)).slice(-2), ('0' + first_issue_date.getDate()).slice(-2), '01'].join('');
   }
   var cur_date = new Date();
   if (end_time - cur_date.getTime() > 1000 * 60 * 2) {
@@ -59,7 +59,7 @@ router.get('/get/omit', (req, res, next) => {
 router.get('/get/opencode', (req, res, next) => {
   var issue = makeIssue().issue;
   var data = mockjs.mock({
-    'data': [/[1-3]/, /[4-5]/, /[6-7]/, /[8-9]/, /1[0-1]/]
+    'data': new Set([/[1-3]/, /[4-5]/, /[6-7]/, /[8-9]/, /1[0-1]/])
   });
   res.json({
     issue,
@@ -68,7 +68,7 @@ router.get('/get/opencode', (req, res, next) => {
 });
 
 router.get('/get/state', (req, res, next) => {
-  var state = makeIssue().state;
+  var state = makeIssue();
   res.json(state);
 });
 

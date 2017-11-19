@@ -1,3 +1,4 @@
+// import 'babel-polyfill';
 import $ from 'jquery';
 
 class Base {
@@ -77,6 +78,7 @@ class Base {
    * @param code {set} 传进来的开奖号码，因为开奖号码不能重复，所以用 set 类型
    */
   setOpenCode(code) {
+    console.log('code', code);
     let self = this;
     /*清空保存的开奖号码*/
     self.open_code.clear();
@@ -113,7 +115,7 @@ class Base {
     /*当前选中项添加激活样式，其余的项取消激活*/
     $cur.addClass('active').siblings().removeClass('active');
     /*获取玩法代号，小写，r 标识任选*/
-    self.cur_play = $cur.attr('desc').toLocaleLowercase();
+    self.cur_play = $cur.attr('desc').toLocaleLowerCase();
     /*更新 DOM 中的玩法说明*/
     $('#zx_sm span').html(self.play_list.get(self.cur_play).tip);
     /*去掉号码选中的样式*/
@@ -187,11 +189,15 @@ class Base {
    */
   addCode() {
     let self = this;
-    let $active = $('.boll-list .btn-boll-active').text().match(/\d(2)/g);
+    let $active = $('.boll-list .btn-boll-active').text().match(/\d{2}/g);
     let active = $active ? $active.length : 0;
+    console.log('active', active);
+    console.log('self.cur_play', self.cur_play);
     let count = self.computeCount(active, self.cur_play);
+    console.log('count', count);
+
     if (count) {
-      self.addCodeItem($active.join(''), self.cur_play, self.play_list.get(self.cur_play).name, count);
+      self.addCodeItem($active.join(' '), self.cur_play, self.play_list.get(self.cur_play).name, count);
     }
   }
 
@@ -215,6 +221,7 @@ class Base {
       </li>
     `;
     /*渲染购物车号码的字符串模板*/
+    console.log(tpl);
     $(self.cart_el).append(tpl);
     self.getTotal();
   }
@@ -254,11 +261,11 @@ class Base {
       tpl = `您选了 <b>${count}</b> 注，共 <b>${count * 2}</b> 元 <em>若中奖，奖金：
             <strong class="red">${range[0]}</strong> 至 <strong class="red">${range[1]}</strong> 元，
             您将${win1 < 0 && win2 < 0 ? '亏损' : '盈利'}
-            <strong class="${win > 0 ? 'red' : 'green'}">${c1}</strong> 
-            至 <strong class="${win2 > 0 ? 'red' : 'green'}">${c2}</strong> 元</em>`;
+            <strong class="${win1 >= 0 ? 'red' : 'green'}">${c1}</strong> 
+            至 <strong class="${win2 >= 0 ? 'red' : 'green'}">${c2}</strong> 元</em>`;
     }
     /*字符串模板渲染到页面上*/
-    $('.self_info').html(tpl);
+    $('.sel_info').html(tpl);
   }
 
   /**
@@ -267,7 +274,7 @@ class Base {
   getTotal() {
     let count = 0;
     $('.codelist li').each((index, item) => {
-      count += $(item).attr(count) * 1;
+      count += $(item).attr('count') * 1;
     });
     $('#count').text(count);
     $('#money').text(count * 2);
