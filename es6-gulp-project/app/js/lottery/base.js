@@ -48,7 +48,8 @@ class Base {
    */
   initNumber() {
     for (let i = 1; i < 12; i++) {
-      this.number.add((i + '').padStart(2, '0')); //number 是 set 类型，因为不允许投注号码重复，padStart 字符串补全两位，用'0'补全
+      /*number 是 set 类型，因为不允许投注号码重复，padStart 字符串补全两位，用'0'补全*/
+      this.number.add((i + '').padStart(2, '0'));
     }
   }
 
@@ -279,6 +280,7 @@ class Base {
    */
   getRandom(num) {
     let arr = [], index;
+    /*Array.from 把伪集合转成真正的数组*/
     let number = Array.from(this.number);
     while (num--) {
       index = Number.parseInt(Math.random() * number.length);

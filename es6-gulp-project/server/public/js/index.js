@@ -9290,7 +9290,8 @@
 	    key: 'initNumber',
 	    value: function initNumber() {
 	      for (var i = 1; i < 12; i++) {
-	        this.number.add((i + '').padStart(2, '0')); //number 是 set 类型，因为不允许投注号码重复，padStart 字符串补全两位，用'0'补全
+	        /*number 是 set 类型，因为不允许投注号码重复，padStart 字符串补全两位，用'0'补全*/
+	        this.number.add((i + '').padStart(2, '0'));
 	      }
 	    }
 
@@ -9586,6 +9587,7 @@
 	    value: function getRandom(num) {
 	      var arr = [],
 	          index = void 0;
+	      /*Array.from 把伪集合转成真正的数组*/
 	      var number = Array.from(this.number);
 	      while (num--) {
 	        index = Number.parseInt(Math.random() * number.length);

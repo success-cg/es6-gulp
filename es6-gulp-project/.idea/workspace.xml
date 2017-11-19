@@ -17,15 +17,14 @@
       <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="294" column="10" lean-forward="true" selection-start-line="294" selection-start-column="10" selection-end-line="294" selection-end-column="10" />
+            <state relative-caret-position="464">
+              <caret line="282" column="30" lean-forward="true" selection-start-line="282" selection-start-column="30" selection-end-line="282" selection-end-column="30" />
               <folding>
                 <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
@@ -41,20 +40,17 @@
                 <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#getCount#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#getTotal#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#getTotal#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#getRandom#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#getRandom#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#getRandomCode#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#getRandomCode#0;n#Base#0" expanded="false" />
-                <marker date="1511067322896" expanded="true" signature="4920:5134" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="4947:4962" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="4947:5051" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="4947:5122" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="6015:6210" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="6313:6626" ph="..." />
-                <marker date="1511067322896" expanded="true" signature="7799:7822" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="4928:5142" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="4955:4970" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="4955:5059" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="4955:5130" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="6023:6218" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="6321:6634" ph="..." />
+                <marker date="1511068054889" expanded="true" signature="7838:7861" ph="..." />
               </folding>
             </state>
           </provider>
@@ -374,12 +370,12 @@
       <workItem from="1510764049817" duration="3659000" />
       <workItem from="1510769839470" duration="20000" />
       <workItem from="1510769887174" duration="1456000" />
-      <workItem from="1510789242579" duration="47004000" />
+      <workItem from="1510789242579" duration="47521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54480000" />
+    <option name="totallyTimeSpent" value="54997000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -710,15 +706,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="294" column="10" lean-forward="true" selection-start-line="294" selection-start-column="10" selection-end-line="294" selection-end-column="10" />
+        <state relative-caret-position="464">
+          <caret line="282" column="30" lean-forward="true" selection-start-line="282" selection-start-column="30" selection-end-line="282" selection-end-column="30" />
           <folding>
             <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#initNumber#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initNumber#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#setOmit#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#setOmit#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#setOpenCode#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#setOpenCode#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#toggleCodeActive#0;n#Base#0" expanded="false" />
@@ -734,20 +729,17 @@
             <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#getCount#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#getTotal#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#getTotal#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#getRandom#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#getRandom#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#getRandomCode#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#getRandomCode#0;n#Base#0" expanded="false" />
-            <marker date="1511067322896" expanded="true" signature="4920:5134" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="4947:4962" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="4947:5051" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="4947:5122" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="6015:6210" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="6313:6626" ph="..." />
-            <marker date="1511067322896" expanded="true" signature="7799:7822" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="4928:5142" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="4955:4970" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="4955:5059" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="4955:5130" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="6023:6218" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="6321:6634" ph="..." />
+            <marker date="1511068054889" expanded="true" signature="7838:7861" ph="..." />
           </folding>
         </state>
       </provider>
