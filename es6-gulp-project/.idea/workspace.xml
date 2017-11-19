@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="base.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="282" column="30" lean-forward="true" selection-start-line="282" selection-start-column="30" selection-end-line="282" selection-end-column="30" />
+            <state relative-caret-position="226">
+              <caret line="187" column="2" lean-forward="false" selection-start-line="187" selection-start-column="2" selection-end-line="187" selection-end-column="2" />
               <folding>
                 <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
@@ -36,7 +36,6 @@
                 <element signature="n#!!doc;n#getName#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#getName#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#addCode#0;n#Base#0" expanded="false" />
-                <element signature="n#!!block;n#addCode#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
                 <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
                 <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
@@ -51,6 +50,63 @@
                 <marker date="1511068054889" expanded="true" signature="6023:6218" ph="..." />
                 <marker date="1511068054889" expanded="true" signature="6321:6634" ph="..." />
                 <marker date="1511068054889" expanded="true" signature="7838:7861" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lottery.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+              <folding>
+                <element signature="e#24#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/babel-core/lib/transformation/file/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="593" column="2" lean-forward="false" selection-start-line="593" selection-start-column="2" selection-end-line="593" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="timer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/lottery/timer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="interface.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
+              <folding>
+                <element signature="e#52#136#0" expanded="false" />
+                <element signature="n#!!doc;n#getOmit#0;n#Interface#0" expanded="false" />
+                <element signature="e#335#601#0" expanded="false" />
+                <element signature="e#377#404#0" expanded="false" />
+                <element signature="e#453#533#0" expanded="false" />
+                <element signature="e#554#593#0" expanded="false" />
+                <element signature="e#784#1081#0" expanded="false" />
+                <element signature="e#799#1073#0" expanded="false" />
+                <element signature="e#845#872#0" expanded="false" />
+                <element signature="e#921#1005#0" expanded="false" />
+                <element signature="e#1026#1065#0" expanded="false" />
+                <element signature="n#!!doc;n#getState#0;n#Interface#0" expanded="false" />
+                <element signature="e#1311#1338#0" expanded="false" />
+                <element signature="e#1454#1493#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,6 +130,7 @@
       <find>玩法提示</find>
       <find>values</find>
       <find>play_list</find>
+      <find>ownkeys</find>
       <find>getCount</find>
     </findStrings>
   </component>
@@ -92,14 +149,14 @@
         <option value="$PROJECT_DIR$/app/views/index.ejs" />
         <option value="$PROJECT_DIR$/app/css/layout.css" />
         <option value="$PROJECT_DIR$/app/views/test.html" />
-        <option value="$PROJECT_DIR$/app/js/lottery/timer.js" />
         <option value="$PROJECT_DIR$/server/public/js/cp.min.js" />
         <option value="$PROJECT_DIR$/server/public/js/index.js" />
-        <option value="$PROJECT_DIR$/app/js/lottery/interface.js" />
         <option value="$PROJECT_DIR$/app/views/test.js" />
-        <option value="$PROJECT_DIR$/app/js/lottery.js" />
         <option value="$PROJECT_DIR$/app/js/lottery/calculate.js" />
         <option value="$PROJECT_DIR$/app/js/lottery/base.js" />
+        <option value="$PROJECT_DIR$/app/js/lottery/interface.js" />
+        <option value="$PROJECT_DIR$/app/js/lottery/timer.js" />
+        <option value="$PROJECT_DIR$/app/js/lottery.js" />
       </list>
     </option>
   </component>
@@ -168,6 +225,9 @@
             <id>Control flow issuesJavaScript</id>
           </State>
           <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
             <id>Data flow issuesJavaScript</id>
           </State>
           <State>
@@ -181,6 +241,9 @@
           </State>
           <State>
             <id>General</id>
+          </State>
+          <State>
+            <id>GeneralCoffeeScript</id>
           </State>
           <State>
             <id>GeneralJavaScript</id>
@@ -213,6 +276,9 @@
             <id>Probable bugsJavaScript</id>
           </State>
           <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
             <id>RegExp</id>
           </State>
           <State>
@@ -227,7 +293,15 @@
           <State>
             <id>XPath</id>
           </State>
+          <State>
+            <id>XSLT</id>
+          </State>
         </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -331,7 +405,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SearchEverywhereHistoryKey" value="getCount&#9;ACTION&#9;null&#10;reformat&#9;ACTION&#9;ReformatCode" />
@@ -370,12 +444,12 @@
       <workItem from="1510764049817" duration="3659000" />
       <workItem from="1510769839470" duration="20000" />
       <workItem from="1510769887174" duration="1456000" />
-      <workItem from="1510789242579" duration="47521000" />
+      <workItem from="1510789242579" duration="53685000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54997000" />
+    <option name="totallyTimeSpent" value="61161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -630,32 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/timer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/class/lesson10 set-map数据结构.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -704,10 +752,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/babel-polyfill/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/class/lesson11 Proxy和Reflect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="63" column="53" lean-forward="false" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/timer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
+          <folding>
+            <element signature="e#52#136#0" expanded="false" />
+            <element signature="n#!!doc;n#getOmit#0;n#Interface#0" expanded="false" />
+            <element signature="e#335#601#0" expanded="false" />
+            <element signature="e#377#404#0" expanded="false" />
+            <element signature="e#453#533#0" expanded="false" />
+            <element signature="e#554#593#0" expanded="false" />
+            <element signature="e#784#1081#0" expanded="false" />
+            <element signature="e#799#1073#0" expanded="false" />
+            <element signature="e#845#872#0" expanded="false" />
+            <element signature="e#921#1005#0" expanded="false" />
+            <element signature="e#1026#1065#0" expanded="false" />
+            <element signature="n#!!doc;n#getState#0;n#Interface#0" expanded="false" />
+            <element signature="e#1311#1338#0" expanded="false" />
+            <element signature="e#1454#1493#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="282" column="30" lean-forward="true" selection-start-line="282" selection-start-column="30" selection-end-line="282" selection-end-column="30" />
+        <state relative-caret-position="226">
+          <caret line="187" column="2" lean-forward="false" selection-start-line="187" selection-start-column="2" selection-end-line="187" selection-end-column="2" />
           <folding>
             <element signature="n#!!doc;n#initPlayList#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#initPlayList#0;n#Base#0" expanded="false" />
@@ -725,7 +828,6 @@
             <element signature="n#!!doc;n#getName#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#getName#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#addCode#0;n#Base#0" expanded="false" />
-            <element signature="n#!!block;n#addCode#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#addCodeItem#0;n#Base#0" expanded="false" />
             <element signature="n#!!block;n#addCodeItem#0;n#Base#0" expanded="false" />
             <element signature="n#!!doc;n#getCount#0;n#Base#0" expanded="false" />
@@ -740,6 +842,24 @@
             <marker date="1511068054889" expanded="true" signature="6023:6218" ph="..." />
             <marker date="1511068054889" expanded="true" signature="6321:6634" ph="..." />
             <marker date="1511068054889" expanded="true" signature="7838:7861" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/babel-core/lib/transformation/file/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="593" column="2" lean-forward="false" selection-start-line="593" selection-start-column="2" selection-end-line="593" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+          <folding>
+            <element signature="e#24#48#0" expanded="true" />
           </folding>
         </state>
       </provider>

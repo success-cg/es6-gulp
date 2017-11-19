@@ -9200,7 +9200,17 @@
 
 	'use strict';
 
-	__webpack_require__(329);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	__webpack_require__(2);
+
+	var _base = __webpack_require__(329);
+
+	var _base2 = _interopRequireDefault(_base);
 
 	var _timer = __webpack_require__(331);
 
@@ -9214,7 +9224,209 @@
 
 	var _interface2 = _interopRequireDefault(_interface);
 
+	var _jquery = __webpack_require__(330);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
+	                                                                                                                                                           * 整合模块：整合彩票业务
+	                                                                                                                                                           */
+
+	/**
+	 * 深度拷贝
+	 * @param target 拷贝的接收方
+	 * @param source  拷贝的来源
+	 */
+	var copyProperties = function copyProperties(target, source) {
+	  /*Reflect 获取镜像代理的属性*/
+	  var _iteratorNormalCompletion = true;
+	  var _didIteratorError = false;
+	  var _iteratorError = undefined;
+
+	  try {
+	    for (var _iterator = Reflect.ownKeys(source)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	      var key = _step.value;
+
+	      /*不拷贝构造函数，原型，name 这三个属性*/
+	      if (key !== 'constructor' && key !== 'prototype' && key !== 'name') {
+	        /*Object.getOwnPropertyDescriptor(obj, prop) 方法返回指定对象上一个自有属性对应的属性描述符。*/
+	        var desc = Object.getOwnPropertyDescriptor(source, key);
+	        /*Object.defineProperty(obj, prop, descriptor) 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。*/
+	        Object.defineProperty(target, key, desc);
+	      }
+	    }
+	  } catch (err) {
+	    _didIteratorError = true;
+	    _iteratorError = err;
+	  } finally {
+	    try {
+	      if (!_iteratorNormalCompletion && _iterator.return) {
+	        _iterator.return();
+	      }
+	    } finally {
+	      if (_didIteratorError) {
+	        throw _iteratorError;
+	      }
+	    }
+	  }
+	};
+
+	/**
+	 * 多重继承
+	 * @param mixins
+	 * @return {Mix}
+	 */
+	var mix = function mix() {
+	  var Mix = function Mix() {
+	    _classCallCheck(this, Mix);
+	  };
+
+	  for (var _len = arguments.length, mixins = Array(_len), _key = 0; _key < _len; _key++) {
+	    mixins[_key] = arguments[_key];
+	  }
+
+	  var _iteratorNormalCompletion2 = true;
+	  var _didIteratorError2 = false;
+	  var _iteratorError2 = undefined;
+
+	  try {
+
+	    for (var _iterator2 = mixins[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	      var mixin = _step2.value;
+
+	      /*深拷贝自有属性*/
+	      copyProperties(Mix, mixin);
+	      /*深拷贝原型*/
+	      copyProperties(Mix.prototype, mixin.prototype);
+	    }
+	  } catch (err) {
+	    _didIteratorError2 = true;
+	    _iteratorError2 = err;
+	  } finally {
+	    try {
+	      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	        _iterator2.return();
+	      }
+	    } finally {
+	      if (_didIteratorError2) {
+	        throw _iteratorError2;
+	      }
+	    }
+	  }
+
+	  return Mix;
+	};
+
+	/*将四个模块多重继承，形成一个新的模块*/
+
+	var Lottery = function (_mix) {
+	  _inherits(Lottery, _mix);
+
+	  /**
+	   * 构造函数
+	   * @param name 区分多个彩种的识别，
+	   * @param cname 彩种中文名
+	   * @param issue 期号
+	   * @param state 开奖状态
+	   */
+	  function Lottery() {
+	    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'syy';
+	    var cname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '11选5';
+	    var issue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '**';
+	    var state = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '**';
+
+	    _classCallCheck(this, Lottery);
+
+	    var _this = _possibleConstructorReturn(this, (Lottery.__proto__ || Object.getPrototypeOf(Lottery)).call(this));
+	    /*super关键字用于访问和调用一个对象的父对象上的函数。*/
+
+
+	    _this.name = name;
+	    _this.cname = cname;
+	    _this.issue = issue;
+	    _this.state = state;
+	    _this.el = '';
+	    _this.omit = new Map();
+	    _this.open_code = new Set();
+	    _this.open_code_list = new Set();
+	    _this.play_list = new Map();
+	    _this.number = new Set();
+	    _this.issue_el = '#curr_issue';
+	    _this.countdown_el = '#countdown';
+	    _this.state_el = '.state_el';
+	    _this.cartList = '.code-list';
+	    _this.omit_el = '';
+	    _this.cur_play = 'r5';
+	    _this.initPlayList();
+	    _this.initNumber();
+	    _this.updateState();
+	    _this.initEvent();
+	    return _this;
+	  }
+
+	  /**
+	   * 更新开奖状态
+	   */
+
+
+	  _createClass(Lottery, [{
+	    key: 'updateState',
+	    value: function updateState() {
+	      var self = this;
+	      /*调用接口获取状态*/
+	      this.getState().then(function (res) {
+	        self.issue = res.issue;
+	        self.end_time = res.end_time;
+	        self.state = res.state;
+	        (0, _jquery2.default)(self.issue_el).text(res.issue);
+	        self.countdown(res.end_time, function (time) {
+	          (0, _jquery2.default)(self.countdown_el).html(time);
+	        }, function () {
+	          /*500 毫秒后获取最新开奖状态，获取最新遗漏数据，获取最新开奖号码*/
+	          setTimeout(function () {
+	            self.updateState();
+	            self.getOmit(self.issue).then(function (res) {
+	              /*获取最新遗漏数据后的回调*/
+	            });
+	            self.getOpenCode(self.issue).then(function (res) {
+	              /*获取最新开奖号码后的回调*/
+	            });
+	          }, 500);
+	        });
+	      });
+	    }
+
+	    /**
+	     * 初始化事件
+	     */
+
+	  }, {
+	    key: 'initEvent',
+	    value: function initEvent() {
+	      var self = this;
+	      /*玩法切换*/
+	      (0, _jquery2.default)('#plays').on('click', 'li', self.changePlayNav.bind(self));
+	      /*号码的选中*/
+	      (0, _jquery2.default)('.boll-list').on('click', '.btn-boll', self.toggleCodeActive.bind(self));
+	      /*添加号码*/
+	      (0, _jquery2.default)('#confirm_sel_code').on('click', self.addCode.bind(self));
+	      /*操作区，大小奇偶操作*/
+	      (0, _jquery2.default)('.dxjo').on('click', 'li', self.assistHandle.bind(self));
+	      /*机选号码，机选1注、5注、10注*/
+	      (0, _jquery2.default)('qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
+	    }
+	  }]);
+
+	  return Lottery;
+	}(mix(_base2.default, _calculate2.default, _interface2.default, _timer2.default));
+
+	exports.default = Lottery;
 
 /***/ }),
 /* 329 */
@@ -19486,8 +19698,14 @@
 
 	  _createClass(Timer, [{
 	    key: 'countdown',
+
+	    /**
+	     * 倒计时方法
+	     * @param end {number} 截止时间
+	     * @param update {function} 时间更新的回调，这里是每秒钟页面刷新显示的时间
+	     * @param handle {function} 倒计时结束后执行的回调，这里是重新获取最新的销售状态
+	     */
 	    value: function countdown(end, update, handle) {
-	      //end 截止时间，update 时间更新的回调，handle 倒计时结束后执行的回调
 	      var now = new Date().getTime(); //获取当前时间
 	      var self = this; //self 获取当前对象的指针
 	      if (now - end) {
@@ -19702,7 +19920,11 @@
 	  _createClass(Interface, [{
 	    key: 'getOmit',
 
-	    /*获取遗漏数据，issue [string] 当前期号*/
+	    /**
+	     * 获取遗漏数据
+	     * @param issue {string} 当前期号
+	     * @return {Promise}
+	     */
 	    value: function getOmit(issue) {
 	      var self = this;
 	      return new Promise(function (resolve, reject) {
@@ -19723,7 +19945,11 @@
 	      });
 	    }
 
-	    /*获取开奖号码，issue [string] 当前期号*/
+	    /**
+	     * 获取开奖号码
+	     * @param issue {string} 当前期号
+	     * @return {Promise}
+	     */
 
 	  }, {
 	    key: 'getOpenCode',
@@ -19747,7 +19973,11 @@
 	      });
 	    }
 
-	    /*获取状态, issue [string] 当前期号*/
+	    /**
+	     * 获取开奖状态
+	     * @param issue {string} 当前期号
+	     * @return {Promise}
+	     */
 
 	  }, {
 	    key: 'getState',

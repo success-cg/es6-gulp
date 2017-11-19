@@ -1,7 +1,13 @@
 // 计时器模块
 
 class Timer {
-  countdown(end, update, handle) { //end 截止时间，update 时间更新的回调，handle 倒计时结束后执行的回调
+  /**
+   * 倒计时方法
+   * @param end {number} 截止时间
+   * @param update {function} 时间更新的回调，这里是每秒钟页面刷新显示的时间
+   * @param handle {function} 倒计时结束后执行的回调，这里是重新获取最新的销售状态
+   */
+  countdown(end, update, handle) {
     const now = new Date().getTime(); //获取当前时间
     const self = this; //self 获取当前对象的指针
     if (now - end) {  //如果当前时间大于截止时间，说明倒计时已经结束了

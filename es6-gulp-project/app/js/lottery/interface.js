@@ -11,7 +11,11 @@ let url = {
 };
 
 class Interface {
-  /*获取遗漏数据，issue [string] 当前期号*/
+  /**
+   * 获取遗漏数据
+   * @param issue {string} 当前期号
+   * @return {Promise}
+   */
   getOmit(issue) {
     let self = this;
     return new Promise((resolve, reject) => {
@@ -32,7 +36,11 @@ class Interface {
     });
   }
 
-  /*获取开奖号码，issue [string] 当前期号*/
+  /**
+   * 获取开奖号码
+   * @param issue {string} 当前期号
+   * @return {Promise}
+   */
   getOpenCode(issue) {
     let self = this;
     return new Promise((resolve, reject) => {
@@ -53,7 +61,11 @@ class Interface {
     });
   }
 
-  /*获取状态, issue [string] 当前期号*/
+  /**
+   * 获取开奖状态
+   * @param issue {string} 当前期号
+   * @return {Promise}
+   */
   getState(issue) {
     let self = this;
     return new Promise((resolve, reject) => {
